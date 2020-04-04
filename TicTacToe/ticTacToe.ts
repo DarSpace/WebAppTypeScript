@@ -1,11 +1,12 @@
 enum Players { //  przypisujemy wartości dla playerów X i O
   Player1 = "X",
-  Player2 = "O"
+  Player2 = "O",
 }
 
 class Board {
   currentPlayer: Players = Players.Player1; // pobranie playera 1 z enuma
   // tworzenie tablicy wszystkich pol
+
   cells = [
     new Cell(),
     new Cell(),
@@ -15,23 +16,46 @@ class Board {
     new Cell(),
     new Cell(),
     new Cell(),
-    new Cell()
+    new Cell(),
   ];
 
   buttonInputs: NodeListOf<HTMLInputElement>;
 
   constructor(buttonInputs: NodeListOf<HTMLInputElement>) {
     this.buttonInputs = buttonInputs;
+
     this.buttonInputs.forEach((elem: HTMLInputElement, index: number) => {
       console.log(elem);
+
       this.cells[index] = new Cell();
-      elem.addEventListener("click", v => {
+      elem.addEventListener("click", (v) => {
         this.cells[index].onClick(this.currentPlayer, elem);
         this.winner();
         this.updateCurrentPlayer();
+        this.getRandomInt();
+        //console.log(this.getRandomInt());
       });
     });
   }
+
+  //
+  //
+  getRandomInt() {
+    return Math.floor(Math.random() * Math.floor(9));
+  }
+
+  computer() {
+    this.getRandomInt();
+    this.buttonInputs.forEach((elem: HTMLInputElement) => {
+      this.cells[this.getRandomInt()] = new Cell();
+      elem.addEventListener("click", (v) => {
+        this.cells[this.getRandomInt()].onClick(this.currentPlayer, elem);
+        this.winner();
+      });
+    });
+  }
+  //
+  //
 
   // zmiana tury graczy
   updateCurrentPlayer() {
