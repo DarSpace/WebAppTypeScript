@@ -1,6 +1,8 @@
+var PlayerToChar = ["X", "O"];
+
 enum Players { //  przypisujemy wartości dla playerów X i O
-  Player1 = "X",
-  Player2 = "O",
+  Player1 = 0,
+  Player2,
 }
 
 class Board {
@@ -27,42 +29,216 @@ class Board {
     this.buttonInputs.forEach((elem: HTMLInputElement, index: number) => {
       console.log(elem);
 
-      this.cells[index] = new Cell();
+      var cell = new Cell();
+      cell.button = elem;
       elem.addEventListener("click", (v) => {
-        this.cells[index].onClick(this.currentPlayer, elem);
-        this.winner();
+        cell.onClick(this.currentPlayer);
+
         this.updateCurrentPlayer();
-        this.getRandomInt();
-        //console.log(this.getRandomInt());
       });
+
+      this.cells[index] = cell;
     });
   }
 
-  //
-  //
   getRandomInt() {
     return Math.floor(Math.random() * Math.floor(9));
   }
 
   computer() {
-    this.getRandomInt();
-    this.buttonInputs.forEach((elem: HTMLInputElement) => {
-      this.cells[this.getRandomInt()] = new Cell();
-      elem.addEventListener("click", (v) => {
-        this.cells[this.getRandomInt()].onClick(this.currentPlayer, elem);
-        this.winner();
-      });
-    });
+    var id = this.getRandomInt();
+    var cell = this.cells[id];
+    //sprawdzanie ostatniego ruchu komputera
+    if (
+      this.cells[0].playerId == this.currentPlayer &&
+      this.cells[1].playerId == this.currentPlayer &&
+      this.cells[2].playerId == null
+    ) {
+      cell.onClick(this.currentPlayer);
+      this.updateCurrentPlayer();
+    } else if (
+      this.cells[3].playerId == this.currentPlayer &&
+      this.cells[4].playerId == this.currentPlayer &&
+      this.cells[5].playerId == null
+    ) {
+      cell.onClick(this.currentPlayer);
+      this.updateCurrentPlayer();
+    } else if (
+      this.cells[6].playerId == this.currentPlayer &&
+      this.cells[7].playerId == this.currentPlayer &&
+      this.cells[8].playerId == null
+    ) {
+      cell.onClick(this.currentPlayer);
+      this.updateCurrentPlayer();
+    } else if (
+      this.cells[1].playerId == this.currentPlayer &&
+      this.cells[2].playerId == this.currentPlayer &&
+      this.cells[0].playerId == null
+    ) {
+      cell.onClick(this.currentPlayer);
+      this.updateCurrentPlayer();
+    } else if (
+      this.cells[4].playerId == this.currentPlayer &&
+      this.cells[5].playerId == this.currentPlayer &&
+      this.cells[3].playerId == null
+    ) {
+      cell.onClick(this.currentPlayer);
+      this.updateCurrentPlayer();
+    } else if (
+      this.cells[7].playerId == this.currentPlayer &&
+      this.cells[8].playerId == this.currentPlayer &&
+      this.cells[6].playerId == null
+    ) {
+      cell.onClick(this.currentPlayer);
+      this.updateCurrentPlayer();
+    } else if (
+      this.cells[0].playerId == this.currentPlayer &&
+      this.cells[2].playerId == this.currentPlayer &&
+      this.cells[1].playerId == null
+    ) {
+      cell.onClick(this.currentPlayer);
+      this.updateCurrentPlayer();
+    } else if (
+      this.cells[3].playerId == this.currentPlayer &&
+      this.cells[5].playerId == this.currentPlayer &&
+      this.cells[4].playerId == null
+    ) {
+      cell.onClick(this.currentPlayer);
+      this.updateCurrentPlayer();
+    } else if (
+      this.cells[6].playerId == this.currentPlayer &&
+      this.cells[8].playerId == this.currentPlayer &&
+      this.cells[7].playerId == null
+    ) {
+      cell.onClick(this.currentPlayer);
+      this.updateCurrentPlayer();
+    } else if (
+      this.cells[0].playerId == this.currentPlayer &&
+      this.cells[3].playerId == this.currentPlayer &&
+      this.cells[6].playerId == null
+    ) {
+      cell.onClick(this.currentPlayer);
+      this.updateCurrentPlayer();
+    } else if (
+      this.cells[1].playerId == this.currentPlayer &&
+      this.cells[4].playerId == this.currentPlayer &&
+      this.cells[7].playerId == null
+    ) {
+      cell.onClick(this.currentPlayer);
+      this.updateCurrentPlayer();
+    } else if (
+      this.cells[2].playerId == this.currentPlayer &&
+      this.cells[5].playerId == this.currentPlayer &&
+      this.cells[8].playerId == null
+    ) {
+      cell.onClick(this.currentPlayer);
+      this.updateCurrentPlayer();
+    } else if (
+      this.cells[6].playerId == this.currentPlayer &&
+      this.cells[3].playerId == this.currentPlayer &&
+      this.cells[0].playerId == null
+    ) {
+      cell.onClick(this.currentPlayer);
+      this.updateCurrentPlayer();
+    } else if (
+      this.cells[7].playerId == this.currentPlayer &&
+      this.cells[4].playerId == this.currentPlayer &&
+      this.cells[1].playerId == null
+    ) {
+      cell.onClick(this.currentPlayer);
+      this.updateCurrentPlayer();
+    } else if (
+      this.cells[8].playerId == this.currentPlayer &&
+      this.cells[5].playerId == this.currentPlayer &&
+      this.cells[2].playerId == null
+    ) {
+      cell.onClick(this.currentPlayer);
+      this.updateCurrentPlayer();
+    } else if (
+      this.cells[0].playerId == this.currentPlayer &&
+      this.cells[6].playerId == this.currentPlayer &&
+      this.cells[3].playerId == null
+    ) {
+      cell.onClick(this.currentPlayer);
+      this.updateCurrentPlayer();
+    } else if (
+      this.cells[1].playerId == this.currentPlayer &&
+      this.cells[7].playerId == this.currentPlayer &&
+      this.cells[4].playerId == null
+    ) {
+      cell.onClick(this.currentPlayer);
+      this.updateCurrentPlayer();
+    } else if (
+      this.cells[2].playerId == this.currentPlayer &&
+      this.cells[5].playerId == this.currentPlayer &&
+      this.cells[8].playerId == null
+    ) {
+      cell.onClick(this.currentPlayer);
+      this.updateCurrentPlayer();
+    } else if (
+      this.cells[0].playerId == this.currentPlayer &&
+      this.cells[4].playerId == this.currentPlayer &&
+      this.cells[8].playerId == null
+    ) {
+      cell.onClick(this.currentPlayer);
+      this.updateCurrentPlayer();
+    } else if (
+      this.cells[8].playerId == this.currentPlayer &&
+      this.cells[4].playerId == this.currentPlayer &&
+      this.cells[0].playerId == null
+    ) {
+      cell.onClick(this.currentPlayer);
+      this.updateCurrentPlayer();
+    } else if (
+      this.cells[0].playerId == this.currentPlayer &&
+      this.cells[8].playerId == this.currentPlayer &&
+      this.cells[4].playerId == null
+    ) {
+      cell.onClick(this.currentPlayer);
+      this.updateCurrentPlayer();
+    } else if (
+      this.cells[2].playerId == this.currentPlayer &&
+      this.cells[4].playerId == this.currentPlayer &&
+      this.cells[6].playerId == null
+    ) {
+      cell.onClick(this.currentPlayer);
+      this.updateCurrentPlayer();
+    } else if (
+      this.cells[2].playerId == this.currentPlayer &&
+      this.cells[6].playerId == this.currentPlayer &&
+      this.cells[4].playerId == null
+    ) {
+      cell.onClick(this.currentPlayer);
+      this.updateCurrentPlayer();
+    } else if (
+      this.cells[6].playerId == this.currentPlayer &&
+      this.cells[4].playerId == this.currentPlayer &&
+      this.cells[2].playerId == null
+    ) {
+      cell.onClick(this.currentPlayer);
+      this.updateCurrentPlayer();
+    }
+
+    // losowanie dopoki nie trafimy na puste pole
+    else if (cell.playerId != null) {
+      cell = this.cells[this.getRandomInt()];
+    }
+    console.log(cell);
+    cell.onClick(this.currentPlayer);
+    this.updateCurrentPlayer();
   }
-  //
-  //
 
   // zmiana tury graczy
   updateCurrentPlayer() {
-    if (this.currentPlayer === Players.Player1) {
-      this.currentPlayer = Players.Player2;
-    } else if (this.currentPlayer === Players.Player2) {
-      this.currentPlayer = Players.Player1;
+    console.log(this.currentPlayer);
+    var isGameDone = this.winner();
+    if (!isGameDone) {
+      if (this.currentPlayer === Players.Player1) {
+        this.currentPlayer = Players.Player2;
+        this.computer();
+      } else if (this.currentPlayer === Players.Player2) {
+        this.currentPlayer = Players.Player1;
+      }
     }
   }
 
@@ -95,20 +271,36 @@ class Board {
         this.cells[4].playerId == this.currentPlayer &&
         this.cells[6].playerId == this.currentPlayer)
     ) {
-      if (this.currentPlayer == "X") alert("Win Player 1");
+      if (this.currentPlayer == Players.Player1) alert("Win Player 1");
       else alert("Win Player 2");
+
+      return true;
+    } else {
+      var counter = 0;
+      this.cells.forEach((element) => {
+        if (element.playerId == null) {
+          counter++;
+        }
+      });
+
+      if (counter == 0) {
+        alert("remis");
+        return true;
+      }
     }
+    return false;
   }
 }
 
 class Cell {
-  playerId = ""; // wartosc na pustym polu
+  playerId: Players; // wartosc na pustym polu
+  button: HTMLInputElement;
 
   // klikniecie w przycisk
-  onClick(playerChar: string, button: HTMLInputElement) {
-    this.playerId = playerChar;
-    button.value = playerChar;
-    button.disabled = true;
+  onClick(player: Players) {
+    this.playerId = player;
+    this.button.value = PlayerToChar[player];
+    this.button.disabled = true;
   }
 }
 

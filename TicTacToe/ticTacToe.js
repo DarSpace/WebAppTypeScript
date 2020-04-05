@@ -1,7 +1,8 @@
+var PlayerToChar = ["X", "O"];
 var Players;
 (function (Players) {
-    Players["Player1"] = "X";
-    Players["Player2"] = "O";
+    Players[Players["Player1"] = 0] = "Player1";
+    Players[Players["Player2"] = 1] = "Player2";
 })(Players || (Players = {}));
 var Board = /** @class */ (function () {
     function Board(buttonInputs) {
@@ -22,41 +23,186 @@ var Board = /** @class */ (function () {
         this.buttonInputs = buttonInputs;
         this.buttonInputs.forEach(function (elem, index) {
             console.log(elem);
-            _this.cells[index] = new Cell();
+            var cell = new Cell();
+            cell.button = elem;
             elem.addEventListener("click", function (v) {
-                _this.cells[index].onClick(_this.currentPlayer, elem);
-                _this.winner();
+                cell.onClick(_this.currentPlayer);
                 _this.updateCurrentPlayer();
-                _this.getRandomInt();
-                //console.log(this.getRandomInt());
             });
+            _this.cells[index] = cell;
         });
     }
-    //
-    //
     Board.prototype.getRandomInt = function () {
         return Math.floor(Math.random() * Math.floor(9));
     };
     Board.prototype.computer = function () {
-        var _this = this;
-        this.getRandomInt();
-        this.buttonInputs.forEach(function (elem) {
-            _this.cells[_this.getRandomInt()] = new Cell();
-            elem.addEventListener("click", function (v) {
-                _this.cells[_this.getRandomInt()].onClick(_this.currentPlayer, elem);
-                _this.winner();
-            });
-        });
+        var id = this.getRandomInt();
+        var cell = this.cells[id];
+        //sprawdzanie ostatniego ruchu komputera
+        if (this.cells[0].playerId == this.currentPlayer &&
+            this.cells[1].playerId == this.currentPlayer &&
+            this.cells[2].playerId == null) {
+            cell.onClick(this.currentPlayer);
+            this.updateCurrentPlayer();
+        }
+        else if (this.cells[3].playerId == this.currentPlayer &&
+            this.cells[4].playerId == this.currentPlayer &&
+            this.cells[5].playerId == null) {
+            cell.onClick(this.currentPlayer);
+            this.updateCurrentPlayer();
+        }
+        else if (this.cells[6].playerId == this.currentPlayer &&
+            this.cells[7].playerId == this.currentPlayer &&
+            this.cells[8].playerId == null) {
+            cell.onClick(this.currentPlayer);
+            this.updateCurrentPlayer();
+        }
+        else if (this.cells[1].playerId == this.currentPlayer &&
+            this.cells[2].playerId == this.currentPlayer &&
+            this.cells[0].playerId == null) {
+            cell.onClick(this.currentPlayer);
+            this.updateCurrentPlayer();
+        }
+        else if (this.cells[4].playerId == this.currentPlayer &&
+            this.cells[5].playerId == this.currentPlayer &&
+            this.cells[3].playerId == null) {
+            cell.onClick(this.currentPlayer);
+            this.updateCurrentPlayer();
+        }
+        else if (this.cells[7].playerId == this.currentPlayer &&
+            this.cells[8].playerId == this.currentPlayer &&
+            this.cells[6].playerId == null) {
+            cell.onClick(this.currentPlayer);
+            this.updateCurrentPlayer();
+        }
+        else if (this.cells[0].playerId == this.currentPlayer &&
+            this.cells[2].playerId == this.currentPlayer &&
+            this.cells[1].playerId == null) {
+            cell.onClick(this.currentPlayer);
+            this.updateCurrentPlayer();
+        }
+        else if (this.cells[3].playerId == this.currentPlayer &&
+            this.cells[5].playerId == this.currentPlayer &&
+            this.cells[4].playerId == null) {
+            cell.onClick(this.currentPlayer);
+            this.updateCurrentPlayer();
+        }
+        else if (this.cells[6].playerId == this.currentPlayer &&
+            this.cells[8].playerId == this.currentPlayer &&
+            this.cells[7].playerId == null) {
+            cell.onClick(this.currentPlayer);
+            this.updateCurrentPlayer();
+        }
+        else if (this.cells[0].playerId == this.currentPlayer &&
+            this.cells[3].playerId == this.currentPlayer &&
+            this.cells[6].playerId == null) {
+            cell.onClick(this.currentPlayer);
+            this.updateCurrentPlayer();
+        }
+        else if (this.cells[1].playerId == this.currentPlayer &&
+            this.cells[4].playerId == this.currentPlayer &&
+            this.cells[7].playerId == null) {
+            cell.onClick(this.currentPlayer);
+            this.updateCurrentPlayer();
+        }
+        else if (this.cells[2].playerId == this.currentPlayer &&
+            this.cells[5].playerId == this.currentPlayer &&
+            this.cells[8].playerId == null) {
+            cell.onClick(this.currentPlayer);
+            this.updateCurrentPlayer();
+        }
+        else if (this.cells[6].playerId == this.currentPlayer &&
+            this.cells[3].playerId == this.currentPlayer &&
+            this.cells[0].playerId == null) {
+            cell.onClick(this.currentPlayer);
+            this.updateCurrentPlayer();
+        }
+        else if (this.cells[7].playerId == this.currentPlayer &&
+            this.cells[4].playerId == this.currentPlayer &&
+            this.cells[1].playerId == null) {
+            cell.onClick(this.currentPlayer);
+            this.updateCurrentPlayer();
+        }
+        else if (this.cells[8].playerId == this.currentPlayer &&
+            this.cells[5].playerId == this.currentPlayer &&
+            this.cells[2].playerId == null) {
+            cell.onClick(this.currentPlayer);
+            this.updateCurrentPlayer();
+        }
+        else if (this.cells[0].playerId == this.currentPlayer &&
+            this.cells[6].playerId == this.currentPlayer &&
+            this.cells[3].playerId == null) {
+            cell.onClick(this.currentPlayer);
+            this.updateCurrentPlayer();
+        }
+        else if (this.cells[1].playerId == this.currentPlayer &&
+            this.cells[7].playerId == this.currentPlayer &&
+            this.cells[4].playerId == null) {
+            cell.onClick(this.currentPlayer);
+            this.updateCurrentPlayer();
+        }
+        else if (this.cells[2].playerId == this.currentPlayer &&
+            this.cells[5].playerId == this.currentPlayer &&
+            this.cells[8].playerId == null) {
+            cell.onClick(this.currentPlayer);
+            this.updateCurrentPlayer();
+        }
+        else if (this.cells[0].playerId == this.currentPlayer &&
+            this.cells[4].playerId == this.currentPlayer &&
+            this.cells[8].playerId == null) {
+            cell.onClick(this.currentPlayer);
+            this.updateCurrentPlayer();
+        }
+        else if (this.cells[8].playerId == this.currentPlayer &&
+            this.cells[4].playerId == this.currentPlayer &&
+            this.cells[0].playerId == null) {
+            cell.onClick(this.currentPlayer);
+            this.updateCurrentPlayer();
+        }
+        else if (this.cells[0].playerId == this.currentPlayer &&
+            this.cells[8].playerId == this.currentPlayer &&
+            this.cells[4].playerId == null) {
+            cell.onClick(this.currentPlayer);
+            this.updateCurrentPlayer();
+        }
+        else if (this.cells[2].playerId == this.currentPlayer &&
+            this.cells[4].playerId == this.currentPlayer &&
+            this.cells[6].playerId == null) {
+            cell.onClick(this.currentPlayer);
+            this.updateCurrentPlayer();
+        }
+        else if (this.cells[2].playerId == this.currentPlayer &&
+            this.cells[6].playerId == this.currentPlayer &&
+            this.cells[4].playerId == null) {
+            cell.onClick(this.currentPlayer);
+            this.updateCurrentPlayer();
+        }
+        else if (this.cells[6].playerId == this.currentPlayer &&
+            this.cells[4].playerId == this.currentPlayer &&
+            this.cells[2].playerId == null) {
+            cell.onClick(this.currentPlayer);
+            this.updateCurrentPlayer();
+        }
+        // losowanie dopoki nie trafimy na puste pole
+        else if (cell.playerId != null) {
+            cell = this.cells[this.getRandomInt()];
+        }
+        console.log(cell);
+        cell.onClick(this.currentPlayer);
+        this.updateCurrentPlayer();
     };
-    //
-    //
     // zmiana tury graczy
     Board.prototype.updateCurrentPlayer = function () {
-        if (this.currentPlayer === Players.Player1) {
-            this.currentPlayer = Players.Player2;
-        }
-        else if (this.currentPlayer === Players.Player2) {
-            this.currentPlayer = Players.Player1;
+        console.log(this.currentPlayer);
+        var isGameDone = this.winner();
+        if (!isGameDone) {
+            if (this.currentPlayer === Players.Player1) {
+                this.currentPlayer = Players.Player2;
+                this.computer();
+            }
+            else if (this.currentPlayer === Players.Player2) {
+                this.currentPlayer = Players.Player1;
+            }
         }
     };
     // sprawdzanie warunków wygranej
@@ -86,23 +232,36 @@ var Board = /** @class */ (function () {
             (this.cells[2].playerId == this.currentPlayer &&
                 this.cells[4].playerId == this.currentPlayer &&
                 this.cells[6].playerId == this.currentPlayer)) {
-            if (this.currentPlayer == "X")
+            if (this.currentPlayer == Players.Player1)
                 alert("Win Player 1");
             else
                 alert("Win Player 2");
+            return true;
         }
+        else {
+            var counter = 0;
+            this.cells.forEach(function (element) {
+                if (element.playerId == null) {
+                    counter++;
+                }
+            });
+            if (counter == 0) {
+                alert("remis");
+                return true;
+            }
+        }
+        return false;
     };
     return Board;
 }());
 var Cell = /** @class */ (function () {
     function Cell() {
-        this.playerId = ""; // wartosc na pustym polu
     }
     // klikniecie w przycisk
-    Cell.prototype.onClick = function (playerChar, button) {
-        this.playerId = playerChar;
-        button.value = playerChar;
-        button.disabled = true;
+    Cell.prototype.onClick = function (player) {
+        this.playerId = player;
+        this.button.value = PlayerToChar[player];
+        this.button.disabled = true;
     };
     return Cell;
 }());
