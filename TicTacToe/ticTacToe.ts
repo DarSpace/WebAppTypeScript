@@ -54,178 +54,180 @@ class Board {
       this.cells[1].playerId == this.currentPlayer &&
       this.cells[2].playerId == null
     ) {
-      cell.onClick(this.currentPlayer);
+      this.cells[2].onClick(this.currentPlayer);
       this.updateCurrentPlayer();
     } else if (
       this.cells[3].playerId == this.currentPlayer &&
       this.cells[4].playerId == this.currentPlayer &&
       this.cells[5].playerId == null
     ) {
-      cell.onClick(this.currentPlayer);
+      this.cells[5].onClick(this.currentPlayer);
       this.updateCurrentPlayer();
     } else if (
       this.cells[6].playerId == this.currentPlayer &&
       this.cells[7].playerId == this.currentPlayer &&
       this.cells[8].playerId == null
     ) {
-      cell.onClick(this.currentPlayer);
+      this.cells[8].onClick(this.currentPlayer);
       this.updateCurrentPlayer();
     } else if (
       this.cells[1].playerId == this.currentPlayer &&
       this.cells[2].playerId == this.currentPlayer &&
       this.cells[0].playerId == null
     ) {
-      cell.onClick(this.currentPlayer);
+      this.cells[0].onClick(this.currentPlayer);
       this.updateCurrentPlayer();
     } else if (
       this.cells[4].playerId == this.currentPlayer &&
       this.cells[5].playerId == this.currentPlayer &&
       this.cells[3].playerId == null
     ) {
-      cell.onClick(this.currentPlayer);
+      this.cells[3].onClick(this.currentPlayer);
       this.updateCurrentPlayer();
     } else if (
       this.cells[7].playerId == this.currentPlayer &&
       this.cells[8].playerId == this.currentPlayer &&
       this.cells[6].playerId == null
     ) {
-      cell.onClick(this.currentPlayer);
+      this.cells[6].onClick(this.currentPlayer);
       this.updateCurrentPlayer();
     } else if (
       this.cells[0].playerId == this.currentPlayer &&
       this.cells[2].playerId == this.currentPlayer &&
       this.cells[1].playerId == null
     ) {
-      cell.onClick(this.currentPlayer);
+      this.cells[1].onClick(this.currentPlayer);
       this.updateCurrentPlayer();
     } else if (
       this.cells[3].playerId == this.currentPlayer &&
       this.cells[5].playerId == this.currentPlayer &&
       this.cells[4].playerId == null
     ) {
-      cell.onClick(this.currentPlayer);
+      this.cells[4].onClick(this.currentPlayer);
       this.updateCurrentPlayer();
     } else if (
       this.cells[6].playerId == this.currentPlayer &&
       this.cells[8].playerId == this.currentPlayer &&
       this.cells[7].playerId == null
     ) {
-      cell.onClick(this.currentPlayer);
+      this.cells[7].onClick(this.currentPlayer);
       this.updateCurrentPlayer();
     } else if (
       this.cells[0].playerId == this.currentPlayer &&
       this.cells[3].playerId == this.currentPlayer &&
       this.cells[6].playerId == null
     ) {
-      cell.onClick(this.currentPlayer);
+      this.cells[6].onClick(this.currentPlayer);
       this.updateCurrentPlayer();
     } else if (
       this.cells[1].playerId == this.currentPlayer &&
       this.cells[4].playerId == this.currentPlayer &&
       this.cells[7].playerId == null
     ) {
-      cell.onClick(this.currentPlayer);
+      this.cells[7].onClick(this.currentPlayer);
       this.updateCurrentPlayer();
     } else if (
       this.cells[2].playerId == this.currentPlayer &&
       this.cells[5].playerId == this.currentPlayer &&
       this.cells[8].playerId == null
     ) {
-      cell.onClick(this.currentPlayer);
+      this.cells[8].onClick(this.currentPlayer);
       this.updateCurrentPlayer();
     } else if (
       this.cells[6].playerId == this.currentPlayer &&
       this.cells[3].playerId == this.currentPlayer &&
       this.cells[0].playerId == null
     ) {
-      cell.onClick(this.currentPlayer);
+      this.cells[0].onClick(this.currentPlayer);
       this.updateCurrentPlayer();
     } else if (
       this.cells[7].playerId == this.currentPlayer &&
       this.cells[4].playerId == this.currentPlayer &&
       this.cells[1].playerId == null
     ) {
-      cell.onClick(this.currentPlayer);
+      this.cells[1].onClick(this.currentPlayer);
       this.updateCurrentPlayer();
     } else if (
       this.cells[8].playerId == this.currentPlayer &&
       this.cells[5].playerId == this.currentPlayer &&
       this.cells[2].playerId == null
     ) {
-      cell.onClick(this.currentPlayer);
+      this.cells[2].onClick(this.currentPlayer);
       this.updateCurrentPlayer();
     } else if (
       this.cells[0].playerId == this.currentPlayer &&
       this.cells[6].playerId == this.currentPlayer &&
       this.cells[3].playerId == null
     ) {
-      cell.onClick(this.currentPlayer);
+      this.cells[3].onClick(this.currentPlayer);
       this.updateCurrentPlayer();
     } else if (
       this.cells[1].playerId == this.currentPlayer &&
       this.cells[7].playerId == this.currentPlayer &&
       this.cells[4].playerId == null
     ) {
-      cell.onClick(this.currentPlayer);
+      this.cells[4].onClick(this.currentPlayer);
       this.updateCurrentPlayer();
     } else if (
       this.cells[2].playerId == this.currentPlayer &&
       this.cells[5].playerId == this.currentPlayer &&
       this.cells[8].playerId == null
     ) {
-      cell.onClick(this.currentPlayer);
+      this.cells[8].onClick(this.currentPlayer);
       this.updateCurrentPlayer();
     } else if (
       this.cells[0].playerId == this.currentPlayer &&
       this.cells[4].playerId == this.currentPlayer &&
       this.cells[8].playerId == null
     ) {
-      cell.onClick(this.currentPlayer);
+      this.cells[8].onClick(this.currentPlayer);
       this.updateCurrentPlayer();
     } else if (
       this.cells[8].playerId == this.currentPlayer &&
       this.cells[4].playerId == this.currentPlayer &&
       this.cells[0].playerId == null
     ) {
-      cell.onClick(this.currentPlayer);
+      this.cells[0].onClick(this.currentPlayer);
       this.updateCurrentPlayer();
     } else if (
       this.cells[0].playerId == this.currentPlayer &&
       this.cells[8].playerId == this.currentPlayer &&
       this.cells[4].playerId == null
     ) {
-      cell.onClick(this.currentPlayer);
+      this.cells[4].onClick(this.currentPlayer);
       this.updateCurrentPlayer();
     } else if (
       this.cells[2].playerId == this.currentPlayer &&
       this.cells[4].playerId == this.currentPlayer &&
       this.cells[6].playerId == null
     ) {
-      cell.onClick(this.currentPlayer);
+      this.cells[6].onClick(this.currentPlayer);
       this.updateCurrentPlayer();
     } else if (
       this.cells[2].playerId == this.currentPlayer &&
       this.cells[6].playerId == this.currentPlayer &&
       this.cells[4].playerId == null
     ) {
-      cell.onClick(this.currentPlayer);
+      this.cells[4].onClick(this.currentPlayer);
       this.updateCurrentPlayer();
     } else if (
       this.cells[6].playerId == this.currentPlayer &&
       this.cells[4].playerId == this.currentPlayer &&
       this.cells[2].playerId == null
     ) {
-      cell.onClick(this.currentPlayer);
+      this.cells[2].onClick(this.currentPlayer);
       this.updateCurrentPlayer();
     }
 
     // losowanie dopoki nie trafimy na puste pole
-    else if (cell.playerId != null) {
-      cell = this.cells[this.getRandomInt()];
+    else {
+      while (cell.playerId != null) {
+        cell = this.cells[this.getRandomInt()];
+      }
+      console.log(cell);
+      cell.onClick(this.currentPlayer);
+      this.updateCurrentPlayer();
     }
-    console.log(cell);
-    cell.onClick(this.currentPlayer);
-    this.updateCurrentPlayer();
   }
 
   // zmiana tury graczy
