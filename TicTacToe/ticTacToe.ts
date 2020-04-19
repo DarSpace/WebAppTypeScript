@@ -93,46 +93,37 @@ class Board {
       this.cells[y][x].playerId == this.cells[y + 2][x].playerId
     ) {
       winner = true;
-      alert("koniec gry player X");
       console.log("if1");
     }
 
     if (
       y + 2 <= this.size - 1 &&
+      x - 2 <= this.size - 1 &&
       this.cells[y][x].playerId == this.cells[y + 1][x - 1].playerId &&
       this.cells[y][x].playerId == this.cells[y + 2][x - 2].playerId
     ) {
       winner = true;
-      alert("koniec gry player X");
       console.log("if2");
     }
 
     if (
-      y + 2 <= this.size - 1 &&
+      x - 2 <= this.size - 1 &&
       this.cells[y][x].playerId == this.cells[y][x - 1].playerId &&
       this.cells[y][x].playerId == this.cells[y][x - 2].playerId
     ) {
       winner = true;
-      alert("koniec gry player X");
+
       console.log("if3");
     }
 
     if (
       x + 2 <= this.size - 1 &&
-      this.cells[y][x].playerId == this.cells[y + 1][x].playerId &&
-      this.cells[y][x].playerId == this.cells[y + 2][x].playerId
-    ) {
-      winner = true;
-      alert("koniec gry player X");
-      console.log("if4");
-    }
-    if (
-      x + 2 <= this.size - 1 &&
+      y + 2 <= this.size - 1 &&
       this.cells[y][x].playerId == this.cells[y + 1][x + 1].playerId &&
       this.cells[y][x].playerId == this.cells[y + 2][x + 2].playerId
     ) {
       winner = true;
-      alert("koniec gry player X");
+
       console.log("if5");
     }
 
@@ -142,71 +133,38 @@ class Board {
       this.cells[y][x].playerId == this.cells[y][x + 2].playerId
     ) {
       winner = true;
-      alert("koniec gry player X");
+
       console.log("if6");
     }
 
     if (
-      y + 2 <= this.size - 1 &&
-      x - 2 >= 0 &&
-      this.cells[y][x].playerId == this.cells[y][x - 1].playerId &&
-      this.cells[y][x].playerId == this.cells[y][x - 2].playerId
-    ) {
-      winner = true;
-      alert("koniec gry player X");
-      console.log("if7");
-    }
-    if (
-      y + 2 <= this.size - 1 &&
-      x - 2 >= 0 &&
+      y - 2 <= this.size - 1 &&
       this.cells[y][x].playerId == this.cells[y - 1][x].playerId &&
       this.cells[y][x].playerId == this.cells[y - 2][x].playerId
     ) {
       winner = true;
-      alert("koniec gry player X");
+
       console.log("if8");
     }
     if (
-      y + 2 <= this.size - 1 &&
-      x - 2 >= 0 &&
+      x - 2 <= this.size - 1 &&
+      y - 2 <= this.size - 1 &&
       this.cells[y][x].playerId == this.cells[y - 1][x - 1].playerId &&
       this.cells[y][x].playerId == this.cells[y - 2][x - 2].playerId
     ) {
-      // winner = true;
-      alert("koniec gry player X");
+      winner = true;
+
       console.log("if9");
     }
 
     if (
-      y + 2 <= this.size - 1 &&
-      x + 2 <= this.size - 1 &&
-      this.cells[y][x].playerId == this.cells[y][x + 1].playerId &&
-      this.cells[y][x].playerId == this.cells[y][x + 2].playerId
-    ) {
-      // winner = true;
-      alert("koniec gry player X");
-      console.log("if10");
-    }
-
-    if (
-      y + 2 <= this.size - 1 &&
-      x + 2 <= this.size - 1 &&
-      this.cells[y][x].playerId == this.cells[y - 1][x].playerId &&
-      this.cells[y][x].playerId == this.cells[y - 2][x].playerId
-    ) {
-      // winner = true;
-      alert("koniec gry player X");
-      console.log("if11");
-    }
-
-    if (
-      y + 2 <= this.size - 1 &&
+      y - 2 <= this.size - 1 &&
       x + 2 <= this.size - 1 &&
       this.cells[y][x].playerId == this.cells[y - 1][x + 1].playerId &&
       this.cells[y][x].playerId == this.cells[y - 2][x + 2].playerId
     ) {
-      //winner = true;
-      alert("koniec gry player X");
+      winner = true;
+
       console.log("if12");
     }
 
@@ -226,8 +184,8 @@ class Board {
         (this.cells[y][x].playerId == this.cells[y + 1][x - 1].playerId &&
           this.cells[y][x].playerId == this.cells[y - 1][x + 1].playerId)
       ) {
-        //winner = true;
-        alert("koniec gry player X");
+        winner = true;
+
         console.log("if13");
       }
     }
