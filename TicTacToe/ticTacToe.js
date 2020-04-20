@@ -131,28 +131,45 @@ var Board = /** @class */ (function () {
             winner = true;
             console.log("if12");
         }
+        //
+        if (x - 1 >= 0 &&
+            x + 1 <= this.size - 1 &&
+            this.cells[y][x].playerId == this.cells[y][x + 1].playerId &&
+            this.cells[y][x].playerId == this.cells[y][x - 1].playerId) {
+            winner = true;
+            console.log("if13");
+        }
+        if (y - 1 >= 0 &&
+            y + 1 <= this.size - 1 &&
+            this.cells[y][x].playerId == this.cells[y + 1][x].playerId &&
+            this.cells[y][x].playerId == this.cells[y - 1][x].playerId) {
+            winner = true;
+            console.log("if14");
+        }
         if (x - 1 >= 0 &&
             y - 1 >= 0 &&
             x + 1 <= this.size - 1 &&
-            y + 1 <= this.size - 1) {
-            if ((this.cells[y][x].playerId == this.cells[y][x + 1].playerId &&
-                this.cells[y][x].playerId == this.cells[y][x - 1].playerId) ||
-                (this.cells[y][x].playerId == this.cells[y + 1][x].playerId &&
-                    this.cells[y][x].playerId == this.cells[y - 1][x].playerId) ||
-                (this.cells[y][x].playerId == this.cells[y + 1][x + 1].playerId &&
-                    this.cells[y][x].playerId == this.cells[y - 1][x - 1].playerId) ||
-                (this.cells[y][x].playerId == this.cells[y + 1][x - 1].playerId &&
-                    this.cells[y][x].playerId == this.cells[y - 1][x + 1].playerId)) {
-                winner = true;
-                console.log("if13");
-            }
+            y + 1 <= this.size - 1 &&
+            this.cells[y][x].playerId == this.cells[y + 1][x + 1].playerId &&
+            this.cells[y][x].playerId == this.cells[y - 1][x - 1].playerId) {
+            winner = true;
+            console.log("if15");
+        }
+        if (x - 1 >= 0 &&
+            y - 1 >= 0 &&
+            x + 1 <= this.size - 1 &&
+            y + 1 <= this.size - 1 &&
+            this.cells[y][x].playerId == this.cells[y + 1][x - 1].playerId &&
+            this.cells[y][x].playerId == this.cells[y - 1][x + 1].playerId) {
+            winner = true;
+            console.log("if16");
         }
         if (winner == true)
             alert("koniec gry player X");
         // else alert("winner  player O");
         // if (this.currentPlayer == 0) alert("Win Player 1");
         //else alert("Win Player2");
-        // return Board;
+        return Board;
     };
     return Board;
 }());
