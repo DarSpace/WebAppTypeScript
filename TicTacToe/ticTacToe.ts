@@ -58,35 +58,7 @@ class Board {
     let winner = false;
     console.log(x);
     console.log(y);
-    /*  if (
-      (this.cells[0][0].playerId == this.currentPlayer &&
-        this.cells[0][1].playerId == this.currentPlayer &&
-        this.cells[0][2].playerId == this.currentPlayer) ||
-      (this.cells[1][0].playerId == this.currentPlayer &&
-        this.cells[1][1].playerId == this.currentPlayer &&
-        this.cells[1][2].playerId == this.currentPlayer) ||
-      (this.cells[2][0].playerId == this.currentPlayer &&
-        this.cells[2][1].playerId == this.currentPlayer &&
-        this.cells[2][2].playerId == this.currentPlayer) ||
-      (this.cells[0][0].playerId == this.currentPlayer &&
-        this.cells[1][0].playerId == this.currentPlayer &&
-        this.cells[2][0].playerId == this.currentPlayer) ||
-      (this.cells[0][1].playerId == this.currentPlayer &&
-        this.cells[1][1].playerId == this.currentPlayer &&
-        this.cells[2][1].playerId == this.currentPlayer) ||
-      (this.cells[0][2].playerId == this.currentPlayer &&
-        this.cells[1][2].playerId == this.currentPlayer &&
-        this.cells[2][2].playerId == this.currentPlayer) ||
-      (this.cells[0][0].playerId == this.currentPlayer &&
-        this.cells[1][1].playerId == this.currentPlayer &&
-        this.cells[2][2].playerId == this.currentPlayer) ||
-      (this.cells[0][2].playerId == this.currentPlayer &&
-        this.cells[1][1].playerId == this.currentPlayer &&
-        this.cells[2][0].playerId == this.currentPlayer)
-    ) {
-      winner = true;
-    }
-*/
+
     if (
       y + 2 <= this.size - 1 &&
       this.cells[y][x].playerId == this.cells[y + 1][x].playerId &&
@@ -167,7 +139,7 @@ class Board {
 
       console.log("if12");
     }
-    //
+
     if (
       x - 1 >= 0 &&
       x + 1 <= this.size - 1 &&
@@ -216,11 +188,8 @@ class Board {
       console.log("if16");
     }
 
-    if (winner == true) alert("koniec gry player X");
-    // else alert("winner  player O");
-
-    // if (this.currentPlayer == 0) alert("Win Player 1");
-    //else alert("Win Player2");
+    if (winner == true)
+      alert("winner" + " " + PlayerToChar[this.cells[y][x].playerId]);
 
     return Board;
   }
@@ -254,4 +223,4 @@ const buttonInputs: NodeListOf<HTMLInputElement> = document.querySelectorAll(
 const gameTable: HTMLTableElement = document.querySelector(
   "#gameTable"
 ) as HTMLTableElement;
-const game = new Board(gameTable, 7);
+const game = new Board(gameTable, 8);
