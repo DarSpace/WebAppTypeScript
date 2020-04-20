@@ -50,32 +50,35 @@ var Board = /** @class */ (function () {
         var winner = false;
         console.log(x);
         console.log(y);
-        if ((this.cells[0][0].playerId == this.currentPlayer &&
+        /*  if (
+          (this.cells[0][0].playerId == this.currentPlayer &&
             this.cells[0][1].playerId == this.currentPlayer &&
             this.cells[0][2].playerId == this.currentPlayer) ||
-            (this.cells[1][0].playerId == this.currentPlayer &&
-                this.cells[1][1].playerId == this.currentPlayer &&
-                this.cells[1][2].playerId == this.currentPlayer) ||
-            (this.cells[2][0].playerId == this.currentPlayer &&
-                this.cells[2][1].playerId == this.currentPlayer &&
-                this.cells[2][2].playerId == this.currentPlayer) ||
-            (this.cells[0][0].playerId == this.currentPlayer &&
-                this.cells[1][0].playerId == this.currentPlayer &&
-                this.cells[2][0].playerId == this.currentPlayer) ||
-            (this.cells[0][1].playerId == this.currentPlayer &&
-                this.cells[1][1].playerId == this.currentPlayer &&
-                this.cells[2][1].playerId == this.currentPlayer) ||
-            (this.cells[0][2].playerId == this.currentPlayer &&
-                this.cells[1][2].playerId == this.currentPlayer &&
-                this.cells[2][2].playerId == this.currentPlayer) ||
-            (this.cells[0][0].playerId == this.currentPlayer &&
-                this.cells[1][1].playerId == this.currentPlayer &&
-                this.cells[2][2].playerId == this.currentPlayer) ||
-            (this.cells[0][2].playerId == this.currentPlayer &&
-                this.cells[1][1].playerId == this.currentPlayer &&
-                this.cells[2][0].playerId == this.currentPlayer)) {
-            winner = true;
+          (this.cells[1][0].playerId == this.currentPlayer &&
+            this.cells[1][1].playerId == this.currentPlayer &&
+            this.cells[1][2].playerId == this.currentPlayer) ||
+          (this.cells[2][0].playerId == this.currentPlayer &&
+            this.cells[2][1].playerId == this.currentPlayer &&
+            this.cells[2][2].playerId == this.currentPlayer) ||
+          (this.cells[0][0].playerId == this.currentPlayer &&
+            this.cells[1][0].playerId == this.currentPlayer &&
+            this.cells[2][0].playerId == this.currentPlayer) ||
+          (this.cells[0][1].playerId == this.currentPlayer &&
+            this.cells[1][1].playerId == this.currentPlayer &&
+            this.cells[2][1].playerId == this.currentPlayer) ||
+          (this.cells[0][2].playerId == this.currentPlayer &&
+            this.cells[1][2].playerId == this.currentPlayer &&
+            this.cells[2][2].playerId == this.currentPlayer) ||
+          (this.cells[0][0].playerId == this.currentPlayer &&
+            this.cells[1][1].playerId == this.currentPlayer &&
+            this.cells[2][2].playerId == this.currentPlayer) ||
+          (this.cells[0][2].playerId == this.currentPlayer &&
+            this.cells[1][1].playerId == this.currentPlayer &&
+            this.cells[2][0].playerId == this.currentPlayer)
+        ) {
+          winner = true;
         }
+    */
         if (y + 2 <= this.size - 1 &&
             this.cells[y][x].playerId == this.cells[y + 1][x].playerId &&
             this.cells[y][x].playerId == this.cells[y + 2][x].playerId) {
@@ -83,13 +86,13 @@ var Board = /** @class */ (function () {
             console.log("if1");
         }
         if (y + 2 <= this.size - 1 &&
-            x - 2 <= this.size - 1 &&
+            x - 2 >= 0 &&
             this.cells[y][x].playerId == this.cells[y + 1][x - 1].playerId &&
             this.cells[y][x].playerId == this.cells[y + 2][x - 2].playerId) {
             winner = true;
             console.log("if2");
         }
-        if (x - 2 <= this.size - 1 &&
+        if (x - 2 >= 0 &&
             this.cells[y][x].playerId == this.cells[y][x - 1].playerId &&
             this.cells[y][x].playerId == this.cells[y][x - 2].playerId) {
             winner = true;
@@ -108,20 +111,20 @@ var Board = /** @class */ (function () {
             winner = true;
             console.log("if6");
         }
-        if (y - 2 <= this.size - 1 &&
+        if (y - 2 >= 0 &&
             this.cells[y][x].playerId == this.cells[y - 1][x].playerId &&
             this.cells[y][x].playerId == this.cells[y - 2][x].playerId) {
             winner = true;
             console.log("if8");
         }
-        if (x - 2 <= this.size - 1 &&
-            y - 2 <= this.size - 1 &&
+        if (x - 2 >= 0 &&
+            y - 2 >= 0 &&
             this.cells[y][x].playerId == this.cells[y - 1][x - 1].playerId &&
             this.cells[y][x].playerId == this.cells[y - 2][x - 2].playerId) {
             winner = true;
             console.log("if9");
         }
-        if (y - 2 <= this.size - 1 &&
+        if (y - 2 >= 0 &&
             x + 2 <= this.size - 1 &&
             this.cells[y][x].playerId == this.cells[y - 1][x + 1].playerId &&
             this.cells[y][x].playerId == this.cells[y - 2][x + 2].playerId) {
@@ -149,7 +152,7 @@ var Board = /** @class */ (function () {
         // else alert("winner  player O");
         // if (this.currentPlayer == 0) alert("Win Player 1");
         //else alert("Win Player2");
-        return Board;
+        // return Board;
     };
     return Board;
 }());
@@ -172,4 +175,4 @@ var Cell = /** @class */ (function () {
 // pobieranie pola 3x3
 var buttonInputs = document.querySelectorAll(".inputButton");
 var gameTable = document.querySelector("#gameTable");
-var game = new Board(gameTable, 3);
+var game = new Board(gameTable, 7);

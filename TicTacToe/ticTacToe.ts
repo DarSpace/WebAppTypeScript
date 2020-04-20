@@ -58,7 +58,7 @@ class Board {
     let winner = false;
     console.log(x);
     console.log(y);
-    if (
+    /*  if (
       (this.cells[0][0].playerId == this.currentPlayer &&
         this.cells[0][1].playerId == this.currentPlayer &&
         this.cells[0][2].playerId == this.currentPlayer) ||
@@ -86,7 +86,7 @@ class Board {
     ) {
       winner = true;
     }
-
+*/
     if (
       y + 2 <= this.size - 1 &&
       this.cells[y][x].playerId == this.cells[y + 1][x].playerId &&
@@ -98,7 +98,7 @@ class Board {
 
     if (
       y + 2 <= this.size - 1 &&
-      x - 2 <= this.size - 1 &&
+      x - 2 >= 0 &&
       this.cells[y][x].playerId == this.cells[y + 1][x - 1].playerId &&
       this.cells[y][x].playerId == this.cells[y + 2][x - 2].playerId
     ) {
@@ -107,7 +107,7 @@ class Board {
     }
 
     if (
-      x - 2 <= this.size - 1 &&
+      x - 2 >= 0 &&
       this.cells[y][x].playerId == this.cells[y][x - 1].playerId &&
       this.cells[y][x].playerId == this.cells[y][x - 2].playerId
     ) {
@@ -138,7 +138,7 @@ class Board {
     }
 
     if (
-      y - 2 <= this.size - 1 &&
+      y - 2 >= 0 &&
       this.cells[y][x].playerId == this.cells[y - 1][x].playerId &&
       this.cells[y][x].playerId == this.cells[y - 2][x].playerId
     ) {
@@ -147,8 +147,8 @@ class Board {
       console.log("if8");
     }
     if (
-      x - 2 <= this.size - 1 &&
-      y - 2 <= this.size - 1 &&
+      x - 2 >= 0 &&
+      y - 2 >= 0 &&
       this.cells[y][x].playerId == this.cells[y - 1][x - 1].playerId &&
       this.cells[y][x].playerId == this.cells[y - 2][x - 2].playerId
     ) {
@@ -158,7 +158,7 @@ class Board {
     }
 
     if (
-      y - 2 <= this.size - 1 &&
+      y - 2 >= 0 &&
       x + 2 <= this.size - 1 &&
       this.cells[y][x].playerId == this.cells[y - 1][x + 1].playerId &&
       this.cells[y][x].playerId == this.cells[y - 2][x + 2].playerId
@@ -196,7 +196,7 @@ class Board {
     // if (this.currentPlayer == 0) alert("Win Player 1");
     //else alert("Win Player2");
 
-    return Board;
+    // return Board;
   }
 }
 
@@ -228,4 +228,4 @@ const buttonInputs: NodeListOf<HTMLInputElement> = document.querySelectorAll(
 const gameTable: HTMLTableElement = document.querySelector(
   "#gameTable"
 ) as HTMLTableElement;
-const game = new Board(gameTable, 3);
+const game = new Board(gameTable, 7);
