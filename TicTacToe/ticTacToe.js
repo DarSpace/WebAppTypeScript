@@ -159,4 +159,4 @@ var Cell = /** @class */ (function () {
 // pobieranie pola 3x3
 var buttonInputs = document.querySelectorAll(".inputButton");
 var gameTable = document.querySelector("#gameTable");
-var game = new Board(gameTable, 8);
+var game = new Board(gameTable, 7);

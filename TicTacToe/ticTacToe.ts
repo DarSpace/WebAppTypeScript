@@ -223,4 +223,4 @@ const buttonInputs: NodeListOf<HTMLInputElement> = document.querySelectorAll(
 const gameTable: HTMLTableElement = document.querySelector(
   "#gameTable"
 ) as HTMLTableElement;
-const game = new Board(gameTable, 8);
+const game = new Board(gameTable, 7);
