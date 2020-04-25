@@ -14,12 +14,11 @@ var InputField = /** @class */ (function () {
         this.name = name;
         this.element.type = "text";
         this.labelhtml = document.createElement("label");
-        this.label = label;
-        this.labelhtml.htmlFor = this.name;
+        this.labelhtml.innerHTML = this.name;
         this.element.name = this.name;
-        this.div.appendChild(this.element);
         this.div.appendChild(this.labelhtml);
-        var test1 = document.querySelector("#box2"); //.appendchild(this.div);
+        this.div.appendChild(this.element);
+        var test1 = document.querySelector("#box2");
         test1 === null || test1 === void 0 ? void 0 : test1.appendChild(this.div);
     }
     InputField.prototype.render = function () {
@@ -30,15 +29,16 @@ var InputField = /** @class */ (function () {
     };
     return InputField;
 }());
+var test = new InputField("Name", "Imię");
+//---
 var TextAreaField = /** @class */ (function () {
     function TextAreaField(name, label) {
         this.div = document.createElement("div");
         this.element = document.createElement("input");
         this.name = name;
-        this.element.type = "textarea";
+        this.element.type = "textArea";
         this.labelhtml = document.createElement("label");
         this.label = label;
-        this.labelhtml.htmlFor = this.name;
         this.element.name = this.name;
         this.div.appendChild(this.element);
         this.div.appendChild(this.labelhtml);
@@ -59,7 +59,6 @@ var DateField = /** @class */ (function () {
         this.element.type = "date";
         this.labelhtml = document.createElement("label");
         this.label = label;
-        this.labelhtml.htmlFor = this.name;
         this.element.name = this.name;
         this.div.appendChild(this.element);
         this.div.appendChild(this.labelhtml);
@@ -80,7 +79,6 @@ var EmailField = /** @class */ (function () {
         this.element.type = "email";
         this.labelhtml = document.createElement("label");
         this.label = label;
-        this.labelhtml.htmlFor = this.name;
         this.element.name = this.name;
         this.div.appendChild(this.element);
         this.div.appendChild(this.labelhtml);
@@ -101,7 +99,6 @@ var SelectField = /** @class */ (function () {
         this.element.type = "select";
         this.labelhtml = document.createElement("label");
         this.label = label;
-        this.labelhtml.htmlFor = this.name;
         this.element.name = this.name;
         this.div.appendChild(this.element);
         this.div.appendChild(this.labelhtml);
@@ -122,7 +119,6 @@ var CheckboxField = /** @class */ (function () {
         this.element.type = "radio";
         this.labelhtml = document.createElement("label");
         this.label = label;
-        this.labelhtml.htmlFor = this.name;
         this.element.name = this.name;
         this.div.appendChild(this.element);
         this.div.appendChild(this.labelhtml);

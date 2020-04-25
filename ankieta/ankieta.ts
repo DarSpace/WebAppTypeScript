@@ -25,16 +25,18 @@ class InputField implements Field {
 
   constructor(name: string, label: string) {
     this.div = <HTMLElement>document.createElement("div");
+
     this.element = <HTMLInputElement>document.createElement("input");
     this.name = name;
     this.element.type = "text";
     this.labelhtml = <HTMLLabelElement>document.createElement("label");
-    this.label = label;
-    this.labelhtml.htmlFor = this.name;
+
+    this.labelhtml.innerHTML = this.name;
     this.element.name = this.name;
-    this.div.appendChild(this.element);
     this.div.appendChild(this.labelhtml);
-    const test1 = document.querySelector("#box2"); //.appendchild(this.div);
+    this.div.appendChild(this.element);
+
+    const test1 = document.querySelector("#box2");
     test1?.appendChild(this.div);
   }
   render(): HTMLElement {
@@ -44,7 +46,9 @@ class InputField implements Field {
     return this.element.value;
   }
 }
+const test = new InputField("Name", "Imię");
 
+//---
 class TextAreaField implements Field {
   name: string;
   label: string;
@@ -57,10 +61,10 @@ class TextAreaField implements Field {
     this.div = <HTMLElement>document.createElement("div");
     this.element = <HTMLInputElement>document.createElement("input");
     this.name = name;
-    this.element.type = "textarea";
+    this.element.type = "textArea";
     this.labelhtml = <HTMLLabelElement>document.createElement("label");
     this.label = label;
-    this.labelhtml.htmlFor = this.name;
+
     this.element.name = this.name;
     this.div.appendChild(this.element);
     this.div.appendChild(this.labelhtml);
@@ -88,7 +92,7 @@ class DateField implements Field {
     this.element.type = "date";
     this.labelhtml = <HTMLLabelElement>document.createElement("label");
     this.label = label;
-    this.labelhtml.htmlFor = this.name;
+
     this.element.name = this.name;
     this.div.appendChild(this.element);
     this.div.appendChild(this.labelhtml);
@@ -116,7 +120,7 @@ class EmailField implements Field {
     this.element.type = "email";
     this.labelhtml = <HTMLLabelElement>document.createElement("label");
     this.label = label;
-    this.labelhtml.htmlFor = this.name;
+
     this.element.name = this.name;
     this.div.appendChild(this.element);
     this.div.appendChild(this.labelhtml);
@@ -144,7 +148,7 @@ class SelectField implements Field {
     this.element.type = "select";
     this.labelhtml = <HTMLLabelElement>document.createElement("label");
     this.label = label;
-    this.labelhtml.htmlFor = this.name;
+
     this.element.name = this.name;
     this.div.appendChild(this.element);
     this.div.appendChild(this.labelhtml);
@@ -172,7 +176,7 @@ class CheckboxField implements Field {
     this.element.type = "radio";
     this.labelhtml = <HTMLLabelElement>document.createElement("label");
     this.label = label;
-    this.labelhtml.htmlFor = this.name;
+
     this.element.name = this.name;
     this.div.appendChild(this.element);
     this.div.appendChild(this.labelhtml);
