@@ -15,6 +15,7 @@ var InputField = /** @class */ (function () {
         this.element.type = "text";
         this.labelhtml = document.createElement("label");
         this.label = label;
+        this.labelhtml.htmlFor = this.name;
         this.element.name = this.name;
         this.div.appendChild(this.element);
         this.div.appendChild(this.labelhtml);
@@ -27,14 +28,68 @@ var InputField = /** @class */ (function () {
     };
     return InputField;
 }());
-var Form = /** @class */ (function () {
-    function Form(id) {
-        this.fields = new Array();
-        this.formElement = document.getElementById(id);
+var TextAreaField = /** @class */ (function () {
+    function TextAreaField(name, label) {
+        this.div = document.createElement("div");
+        this.element = document.createElement("input");
+        this.name = name;
+        this.element.type = "textarea";
+        this.labelhtml = document.createElement("label");
+        this.label = label;
+        this.labelhtml.htmlFor = this.name;
+        this.element.name = this.name;
+        this.div.appendChild(this.element);
+        this.div.appendChild(this.labelhtml);
     }
-    Form.prototype.render = function () { };
-    Form.prototype.getValue = function () { };
-    return Form;
+    TextAreaField.prototype.render = function () {
+        return this.element;
+    };
+    TextAreaField.prototype.getValue = function () {
+        return this.element.value;
+    };
+    return TextAreaField;
+}());
+var DateField = /** @class */ (function () {
+    function DateField(name, label) {
+        this.div = document.createElement("div");
+        this.element = document.createElement("input");
+        this.name = name;
+        this.element.type = "date";
+        this.labelhtml = document.createElement("label");
+        this.label = label;
+        this.labelhtml.htmlFor = this.name;
+        this.element.name = this.name;
+        this.div.appendChild(this.element);
+        this.div.appendChild(this.labelhtml);
+    }
+    DateField.prototype.render = function () {
+        return this.element;
+    };
+    DateField.prototype.getValue = function () {
+        return this.element.value;
+    };
+    return DateField;
+}());
+var EmailField = /** @class */ (function () {
+    function EmailField(name, label) {
+        this.div = document.createElement("div");
+        this.element = document.createElement("input");
+        this.name = name;
+        this.element.type = "email";
+        this.labelhtml = document.createElement("label");
+        this.label = label;
+        this.labelhtml.htmlFor = this.name;
+        this.element.name = this.name;
+        this.div.appendChild(this.element);
+        this.div.appendChild(this.labelhtml);
+    }
+    EmailField.prototype.render = function () {
+        return this.element;
+    };
+    EmailField.prototype.getValue = function () {
+        return this.element.value;
+    };
+    return EmailField;
 }());
 var App = /** @class */ (function () {
     function App() {
@@ -42,6 +97,15 @@ var App = /** @class */ (function () {
     }
     return App;
 }());
+var Form = /** @class */ (function () {
+    function Form(id) {
+        this.fields = new Array();
+    }
+    return Form;
+}());
+/*
 ////let d = new InputField("input", "Input");
 ///let x = document.getElementById("test");
+
 //x?.appendChild(d.render());
+*/
