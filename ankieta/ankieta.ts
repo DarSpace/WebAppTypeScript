@@ -31,7 +31,7 @@ class InputField implements Field {
     this.element.type = "text";
     this.labelhtml = <HTMLLabelElement>document.createElement("label");
 
-    this.labelhtml.innerHTML = this.name;
+    this.labelhtml.innerHTML = label;
     this.element.name = this.name;
     this.div.appendChild(this.labelhtml);
     this.div.appendChild(this.element);
@@ -46,28 +46,31 @@ class InputField implements Field {
     return this.element.value;
   }
 }
-const test = new InputField("Name", "Imię");
-
-//---
+const NameBox = new InputField("Name", "Imię");
+//-----
 class TextAreaField implements Field {
   name: string;
   label: string;
   type: FieldType;
-  element: HTMLInputElement;
+  element: HTMLTextAreaElement;
   labelhtml: HTMLLabelElement;
   div: HTMLElement;
 
   constructor(name: string, label: string) {
     this.div = <HTMLElement>document.createElement("div");
-    this.element = <HTMLInputElement>document.createElement("input");
-    this.name = name;
-    this.element.type = "textArea";
-    this.labelhtml = <HTMLLabelElement>document.createElement("label");
-    this.label = label;
 
+    this.element = <HTMLTextAreaElement>document.createElement("textarea");
+    this.name = name;
+
+    this.labelhtml = <HTMLLabelElement>document.createElement("label");
+
+    this.labelhtml.innerHTML = label;
     this.element.name = this.name;
-    this.div.appendChild(this.element);
     this.div.appendChild(this.labelhtml);
+    this.div.appendChild(this.element);
+
+    const test2 = document.querySelector("#box2");
+    test2?.appendChild(this.div);
   }
   render(): HTMLElement {
     return this.element;
@@ -76,7 +79,8 @@ class TextAreaField implements Field {
     return this.element.value;
   }
 }
-
+const TextAreaBox = new TextAreaField("co polecasz", " TextAreaBox1");
+//------
 class DateField implements Field {
   name: string;
   label: string;
@@ -87,15 +91,19 @@ class DateField implements Field {
 
   constructor(name: string, label: string) {
     this.div = <HTMLElement>document.createElement("div");
+
     this.element = <HTMLInputElement>document.createElement("input");
     this.name = name;
     this.element.type = "date";
     this.labelhtml = <HTMLLabelElement>document.createElement("label");
-    this.label = label;
 
+    this.labelhtml.innerHTML = label;
     this.element.name = this.name;
-    this.div.appendChild(this.element);
     this.div.appendChild(this.labelhtml);
+    this.div.appendChild(this.element);
+
+    const test3 = document.querySelector("#box2");
+    test3?.appendChild(this.div);
   }
   render(): HTMLElement {
     return this.element;
@@ -105,6 +113,8 @@ class DateField implements Field {
   }
 }
 
+const DateBox = new DateField("Data", "data");
+//-----
 class EmailField implements Field {
   name: string;
   label: string;
@@ -115,15 +125,19 @@ class EmailField implements Field {
 
   constructor(name: string, label: string) {
     this.div = <HTMLElement>document.createElement("div");
+
     this.element = <HTMLInputElement>document.createElement("input");
     this.name = name;
     this.element.type = "email";
     this.labelhtml = <HTMLLabelElement>document.createElement("label");
-    this.label = label;
 
+    this.labelhtml.innerHTML = label;
     this.element.name = this.name;
-    this.div.appendChild(this.element);
     this.div.appendChild(this.labelhtml);
+    this.div.appendChild(this.element);
+
+    const test4 = document.querySelector("#box2");
+    test4?.appendChild(this.div);
   }
   render(): HTMLElement {
     return this.element;
@@ -132,26 +146,31 @@ class EmailField implements Field {
     return this.element.value;
   }
 }
-
+const EmailBox = new EmailField("email", "podaj Email");
+//---
 class SelectField implements Field {
   name: string;
   label: string;
   type: FieldType;
-  element: HTMLInputElement;
+  element: HTMLSelectElement;
   labelhtml: HTMLLabelElement;
+
   div: HTMLElement;
 
   constructor(name: string, label: string) {
     this.div = <HTMLElement>document.createElement("div");
-    this.element = <HTMLInputElement>document.createElement("input");
-    this.name = name;
-    this.element.type = "select";
-    this.labelhtml = <HTMLLabelElement>document.createElement("label");
-    this.label = label;
 
+    this.element = <HTMLSelectElement>document.createElement("select");
+    this.name = name;
+    this.labelhtml = <HTMLLabelElement>document.createElement("label");
+
+    this.labelhtml.innerHTML = label;
     this.element.name = this.name;
-    this.div.appendChild(this.element);
     this.div.appendChild(this.labelhtml);
+    this.div.appendChild(this.element);
+
+    const test5 = document.querySelector("#box2");
+    test5?.appendChild(this.div);
   }
   render(): HTMLElement {
     return this.element;
@@ -160,6 +179,8 @@ class SelectField implements Field {
     return this.element.value;
   }
 }
+const SelektBox = new SelectField("cos", "Iddds");
+//-------------
 
 class CheckboxField implements Field {
   name: string;
@@ -171,15 +192,19 @@ class CheckboxField implements Field {
 
   constructor(name: string, label: string) {
     this.div = <HTMLElement>document.createElement("div");
+
     this.element = <HTMLInputElement>document.createElement("input");
     this.name = name;
-    this.element.type = "radio";
+    this.element.type = "checkbox";
     this.labelhtml = <HTMLLabelElement>document.createElement("label");
-    this.label = label;
 
+    this.labelhtml.innerHTML = label;
     this.element.name = this.name;
-    this.div.appendChild(this.element);
     this.div.appendChild(this.labelhtml);
+    this.div.appendChild(this.element);
+
+    const test6 = document.querySelector("#box2");
+    test6?.appendChild(this.div);
   }
   render(): HTMLElement {
     return this.element;
@@ -188,6 +213,9 @@ class CheckboxField implements Field {
     return this.element.value;
   }
 }
+const Check1 = new CheckboxField("box1", "Imię");
+
+//=====
 
 class App {
   form: any;
