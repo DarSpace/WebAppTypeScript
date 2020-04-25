@@ -34,6 +34,8 @@ class InputField implements Field {
     this.element.name = this.name;
     this.div.appendChild(this.element);
     this.div.appendChild(this.labelhtml);
+    const test1 = document.querySelector("#box2"); //.appendchild(this.div);
+    test1?.appendChild(this.div);
   }
   render(): HTMLElement {
     return this.element;
@@ -71,7 +73,6 @@ class TextAreaField implements Field {
   }
 }
 
-
 class DateField implements Field {
   name: string;
   label: string;
@@ -99,7 +100,6 @@ class DateField implements Field {
     return this.element.value;
   }
 }
-
 
 class EmailField implements Field {
   name: string;
@@ -129,18 +129,61 @@ class EmailField implements Field {
   }
 }
 
+class SelectField implements Field {
+  name: string;
+  label: string;
+  type: FieldType;
+  element: HTMLInputElement;
+  labelhtml: HTMLLabelElement;
+  div: HTMLElement;
 
+  constructor(name: string, label: string) {
+    this.div = <HTMLElement>document.createElement("div");
+    this.element = <HTMLInputElement>document.createElement("input");
+    this.name = name;
+    this.element.type = "select";
+    this.labelhtml = <HTMLLabelElement>document.createElement("label");
+    this.label = label;
+    this.labelhtml.htmlFor = this.name;
+    this.element.name = this.name;
+    this.div.appendChild(this.element);
+    this.div.appendChild(this.labelhtml);
+  }
+  render(): HTMLElement {
+    return this.element;
+  }
+  getValue(): any {
+    return this.element.value;
+  }
+}
 
+class CheckboxField implements Field {
+  name: string;
+  label: string;
+  type: FieldType;
+  element: HTMLInputElement;
+  labelhtml: HTMLLabelElement;
+  div: HTMLElement;
 
-
-
-
-
-
-
-
-
-
+  constructor(name: string, label: string) {
+    this.div = <HTMLElement>document.createElement("div");
+    this.element = <HTMLInputElement>document.createElement("input");
+    this.name = name;
+    this.element.type = "radio";
+    this.labelhtml = <HTMLLabelElement>document.createElement("label");
+    this.label = label;
+    this.labelhtml.htmlFor = this.name;
+    this.element.name = this.name;
+    this.div.appendChild(this.element);
+    this.div.appendChild(this.labelhtml);
+  }
+  render(): HTMLElement {
+    return this.element;
+  }
+  getValue(): any {
+    return this.element.value;
+  }
+}
 
 class App {
   form: any;
@@ -154,15 +197,10 @@ class Form {
   formElement: HTMLElement;
   constructor(id: string) {
     this.fields = new Array();
-    
+    this.formElement = document.getElementById(id);
+  }
 
+  render(): void {}
 
-
+  getValue(): void {}
 }
-
-/*
-////let d = new InputField("input", "Input");
-///let x = document.getElementById("test");
-
-//x?.appendChild(d.render());
-*/
