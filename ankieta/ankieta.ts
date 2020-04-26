@@ -153,16 +153,23 @@ class SelectField implements Field {
   type: FieldType;
   element: HTMLSelectElement;
   labelhtml: HTMLLabelElement;
-
+  option1: HTMLOptionElement;
+  option2: HTMLOptionElement;
   div: HTMLElement;
 
   constructor(name: string, label: string) {
     this.div = <HTMLElement>document.createElement("div");
-
     this.element = <HTMLSelectElement>document.createElement("select");
     this.name = name;
     this.labelhtml = <HTMLLabelElement>document.createElement("label");
-
+    this.option1 = <HTMLOptionElement>document.createElement("option");
+    this.option1.innerHTML = "AGH";
+    this.option1.value = "AGH";
+    this.option2 = <HTMLOptionElement>document.createElement("option");
+    this.option2.innerHTML = "UJ";
+    this.option2.value = "UJ";
+    this.element.appendChild(this.option1);
+    this.element.appendChild(this.option2);
     this.labelhtml.innerHTML = label;
     this.element.name = this.name;
     this.div.appendChild(this.labelhtml);
@@ -213,6 +220,59 @@ class CheckboxField implements Field {
   }
 }
 
+class DescriptionBox {
+  name: string;
+  label: string;
+  type: FieldType;
+  element: HTMLInputElement;
+  labelhtml: HTMLLabelElement;
+  div: HTMLElement;
+  nameBox: HTMLElement;
+  surname: HTMLElement;
+  date: HTMLElement;
+  email: HTMLElement;
+  checkBox: HTMLElement;
+  selectBox: HTMLElement;
+  textArea: HTMLElement;
+
+  constructor(
+    name: string,
+    surname: string,
+    data: Date,
+    email: string,
+    checkBox: boolean,
+    select: string,
+    uwagi: string
+  ) {
+    this.div = <HTMLElement>document.createElement("div");
+    this.nameBox = <HTMLElement>document.createElement("div");
+    this.nameBox.append("Imię: " + name);
+    this.surname = <HTMLElement>document.createElement("div");
+    this.surname.append("Nazwisko: " + surname);
+    this.date = <HTMLElement>document.createElement("div");
+    this.date.append("Data Urodzenia: " + data);
+    this.email = <HTMLElement>document.createElement("div");
+    this.email.append("Email: " + email);
+    this.checkBox = <HTMLElement>document.createElement("div");
+    this.checkBox.append("Czy masz ukończone 18 lat: " + checkBox);
+    this.selectBox = <HTMLElement>document.createElement("div");
+    this.selectBox.append("Wybrana uczelnia to: " + select);
+    this.textArea = <HTMLElement>document.createElement("div");
+    this.textArea.append("uwagi: " + uwagi);
+
+    this.div.appendChild(this.nameBox);
+    this.div.appendChild(this.surname);
+    this.div.appendChild(this.date);
+    this.div.appendChild(this.email);
+    this.div.appendChild(this.checkBox);
+    this.div.appendChild(this.selectBox);
+    this.div.appendChild(this.textArea);
+
+    const test6 = document.querySelector("#formEnd");
+    test6?.appendChild(this.div);
+  }
+}
+
 //=====
 
 class App {
@@ -225,10 +285,10 @@ class App {
   createButton(): void {
     const button = document.createElement("button");
     button.innerText = "create";
-    document.body.appendChild(button);
+    document.querySelector("#box2")?.appendChild(button);
 
     button.addEventListener("click", (e) => {
-      this.form.getValue();
+      this.form.showValues();
     });
   }
 }
@@ -243,8 +303,10 @@ class Form {
   Check1: CheckboxField;
   SelektBox: SelectField;
   TextAreaBox: TextAreaField;
+  prevValues: DescriptionBox[];
   constructor(id: string) {
     this.fields = new Array();
+    this.prevValues = new Array();
     this.NameBox = new InputField("Name", "Imię");
     this.NameBox2 = new InputField("Surname", "Nazwisko");
     this.DateBox = new DateField("Data", "data urodzenia");
@@ -252,9 +314,9 @@ class Form {
     this.Check1 = new CheckboxField("box1", "Czy masz ukończone 18 lat");
     this.SelektBox = new SelectField("select", "Wybrany kierunek studiów");
     this.TextAreaBox = new TextAreaField("TextArea1", " uwagi");
-    this.formElement = document.getElementById(id);
+    //this.formElement = document.getElementById(id);
   }
-
+  /*
   render(): void {
     this.NameBox.render();
     this.NameBox2.render();
@@ -264,8 +326,8 @@ class Form {
     this.SelektBox.render();
     this.TextAreaBox.render();
   }
-
-  getValue(): void {
+*/
+  showValues(): void {
     this.NameBox.getValue();
     this.NameBox2.getValue();
     this.DateBox.getValue();
@@ -281,6 +343,18 @@ class Form {
     console.log(this.Check1.getValue());
     console.log(this.SelektBox.getValue());
     console.log(this.TextAreaBox.getValue());
+
+    this.prevValues.push(
+      new DescriptionBox(
+        this.NameBox.getValue(),
+        this.NameBox2.getValue(),
+        this.DateBox.getValue(),
+        this.EmailBox.getValue(),
+        this.Check1.getValue(),
+        this.SelektBox.getValue(),
+        this.TextAreaBox.getValue()
+      )
+    );
   }
 }
 

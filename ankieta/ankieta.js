@@ -104,6 +104,14 @@ var SelectField = /** @class */ (function () {
         this.element = document.createElement("select");
         this.name = name;
         this.labelhtml = document.createElement("label");
+        this.option1 = document.createElement("option");
+        this.option1.innerHTML = "AGH";
+        this.option1.value = "AGH";
+        this.option2 = document.createElement("option");
+        this.option2.innerHTML = "UJ";
+        this.option2.value = "UJ";
+        this.element.appendChild(this.option1);
+        this.element.appendChild(this.option2);
         this.labelhtml.innerHTML = label;
         this.element.name = this.name;
         this.div.appendChild(this.labelhtml);
@@ -142,6 +150,35 @@ var CheckboxField = /** @class */ (function () {
     };
     return CheckboxField;
 }());
+var DescriptionBox = /** @class */ (function () {
+    function DescriptionBox(name, surname, data, email, checkBox, select, uwagi) {
+        this.div = document.createElement("div");
+        this.nameBox = document.createElement("div");
+        this.nameBox.append("Imię: " + name);
+        this.surname = document.createElement("div");
+        this.surname.append("Nazwisko: " + surname);
+        this.date = document.createElement("div");
+        this.date.append("Data Urodzenia: " + data);
+        this.email = document.createElement("div");
+        this.email.append("Email: " + email);
+        this.checkBox = document.createElement("div");
+        this.checkBox.append("Czy masz ukończone 18 lat: " + checkBox);
+        this.selectBox = document.createElement("div");
+        this.selectBox.append("Wybrana uczelnia to: " + select);
+        this.textArea = document.createElement("div");
+        this.textArea.append("uwagi: " + uwagi);
+        this.div.appendChild(this.nameBox);
+        this.div.appendChild(this.surname);
+        this.div.appendChild(this.date);
+        this.div.appendChild(this.email);
+        this.div.appendChild(this.checkBox);
+        this.div.appendChild(this.selectBox);
+        this.div.appendChild(this.textArea);
+        var test6 = document.querySelector("#formEnd");
+        test6 === null || test6 === void 0 ? void 0 : test6.appendChild(this.div);
+    }
+    return DescriptionBox;
+}());
 //=====
 var App = /** @class */ (function () {
     function App() {
@@ -150,11 +187,12 @@ var App = /** @class */ (function () {
     }
     App.prototype.createButton = function () {
         var _this = this;
+        var _a;
         var button = document.createElement("button");
         button.innerText = "create";
-        document.body.appendChild(button);
+        (_a = document.querySelector("#box2")) === null || _a === void 0 ? void 0 : _a.appendChild(button);
         button.addEventListener("click", function (e) {
-            _this.form.getValue();
+            _this.form.showValues();
         });
     };
     return App;
@@ -162,6 +200,7 @@ var App = /** @class */ (function () {
 var Form = /** @class */ (function () {
     function Form(id) {
         this.fields = new Array();
+        this.prevValues = new Array();
         this.NameBox = new InputField("Name", "Imię");
         this.NameBox2 = new InputField("Surname", "Nazwisko");
         this.DateBox = new DateField("Data", "data urodzenia");
@@ -169,18 +208,20 @@ var Form = /** @class */ (function () {
         this.Check1 = new CheckboxField("box1", "Czy masz ukończone 18 lat");
         this.SelektBox = new SelectField("select", "Wybrany kierunek studiów");
         this.TextAreaBox = new TextAreaField("TextArea1", " uwagi");
-        this.formElement = document.getElementById(id);
+        //this.formElement = document.getElementById(id);
     }
-    Form.prototype.render = function () {
-        this.NameBox.render();
-        this.NameBox2.render();
-        this.DateBox.render();
-        this.EmailBox.render();
-        this.Check1.render();
-        this.SelektBox.render();
-        this.TextAreaBox.render();
-    };
-    Form.prototype.getValue = function () {
+    /*
+    render(): void {
+      this.NameBox.render();
+      this.NameBox2.render();
+      this.DateBox.render();
+      this.EmailBox.render();
+      this.Check1.render();
+      this.SelektBox.render();
+      this.TextAreaBox.render();
+    }
+  */
+    Form.prototype.showValues = function () {
         this.NameBox.getValue();
         this.NameBox2.getValue();
         this.DateBox.getValue();
@@ -195,6 +236,7 @@ var Form = /** @class */ (function () {
         console.log(this.Check1.getValue());
         console.log(this.SelektBox.getValue());
         console.log(this.TextAreaBox.getValue());
+        this.prevValues.push(new DescriptionBox(this.NameBox.getValue(), this.NameBox2.getValue(), this.DateBox.getValue(), this.EmailBox.getValue(), this.Check1.getValue(), this.SelektBox.getValue(), this.TextAreaBox.getValue()));
     };
     return Form;
 }());
