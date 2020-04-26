@@ -188,6 +188,13 @@ var Form = /** @class */ (function () {
         this.Check1.getValue();
         this.SelektBox.getValue();
         this.TextAreaBox.getValue();
+        console.log(this.NameBox.getValue());
+        console.log(this.NameBox2.getValue());
+        console.log(this.DateBox.getValue());
+        console.log(this.EmailBox.getValue());
+        console.log(this.Check1.getValue());
+        console.log(this.SelektBox.getValue());
+        console.log(this.TextAreaBox.getValue());
     };
     return Form;
 }());
