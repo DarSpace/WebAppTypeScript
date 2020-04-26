@@ -213,23 +213,23 @@ class CheckboxField implements Field {
   }
 }
 
-/*
-function  createBox() {
-const NameBox = new InputField("Name", "Imię");
-const NameBox2 = new InputField("Surname", "Nazwisko");
-const DateBox = new DateField("Data", "data urodzenia");
-const EmailBox = new EmailField("email", "podaj Email");
-const Check1 = new CheckboxField("box1", "Czy masz ukończone 18 lat");
-const SelektBox = new SelectField("select", "Wybrany kierunek studiów");
-const TextAreaBox = new TextAreaField("TextArea1", " uwagi");
-*/
-//};
 //=====
 
 class App {
   form: any;
   constructor() {
     this.form = new Form("1");
+    this.createButton();
+  }
+
+  createButton(): void {
+    const button = document.createElement("button");
+    button.innerText = "create";
+    document.body.appendChild(button);
+
+    button.addEventListener("click", (e) => {
+      this.form.getValue();
+    });
   }
 }
 
