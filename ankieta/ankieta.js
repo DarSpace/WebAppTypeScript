@@ -22,14 +22,13 @@ var InputField = /** @class */ (function () {
         test1 === null || test1 === void 0 ? void 0 : test1.appendChild(this.div);
     }
     InputField.prototype.render = function () {
-        return this.element;
+        return this.div;
     };
     InputField.prototype.getValue = function () {
         return this.element.value;
     };
     return InputField;
 }());
-var NameBox = new InputField("Name", "Imię");
 //-----
 var TextAreaField = /** @class */ (function () {
     function TextAreaField(name, label) {
@@ -45,14 +44,13 @@ var TextAreaField = /** @class */ (function () {
         test2 === null || test2 === void 0 ? void 0 : test2.appendChild(this.div);
     }
     TextAreaField.prototype.render = function () {
-        return this.element;
+        return this.div;
     };
     TextAreaField.prototype.getValue = function () {
         return this.element.value;
     };
     return TextAreaField;
 }());
-var TextAreaBox = new TextAreaField("co polecasz", " TextAreaBox1");
 //------
 var DateField = /** @class */ (function () {
     function DateField(name, label) {
@@ -69,14 +67,13 @@ var DateField = /** @class */ (function () {
         test3 === null || test3 === void 0 ? void 0 : test3.appendChild(this.div);
     }
     DateField.prototype.render = function () {
-        return this.element;
+        return this.div;
     };
     DateField.prototype.getValue = function () {
         return this.element.value;
     };
     return DateField;
 }());
-var DateBox = new DateField("Data", "data");
 //-----
 var EmailField = /** @class */ (function () {
     function EmailField(name, label) {
@@ -93,14 +90,13 @@ var EmailField = /** @class */ (function () {
         test4 === null || test4 === void 0 ? void 0 : test4.appendChild(this.div);
     }
     EmailField.prototype.render = function () {
-        return this.element;
+        return this.div;
     };
     EmailField.prototype.getValue = function () {
         return this.element.value;
     };
     return EmailField;
 }());
-var EmailBox = new EmailField("email", "podaj Email");
 //---
 var SelectField = /** @class */ (function () {
     function SelectField(name, label) {
@@ -116,14 +112,13 @@ var SelectField = /** @class */ (function () {
         test5 === null || test5 === void 0 ? void 0 : test5.appendChild(this.div);
     }
     SelectField.prototype.render = function () {
-        return this.element;
+        return this.div;
     };
     SelectField.prototype.getValue = function () {
         return this.element.value;
     };
     return SelectField;
 }());
-var SelektBox = new SelectField("cos", "Iddds");
 //-------------
 var CheckboxField = /** @class */ (function () {
     function CheckboxField(name, label) {
@@ -140,14 +135,20 @@ var CheckboxField = /** @class */ (function () {
         test6 === null || test6 === void 0 ? void 0 : test6.appendChild(this.div);
     }
     CheckboxField.prototype.render = function () {
-        return this.element;
+        return this.div;
     };
     CheckboxField.prototype.getValue = function () {
         return this.element.value;
     };
     return CheckboxField;
 }());
-var Check1 = new CheckboxField("box1", "Imię");
+var NameBox = new InputField("Name", "Imię");
+var NameBox2 = new InputField("Surname", "Nazwisko");
+var DateBox = new DateField("Data", "data urodzenia");
+var EmailBox = new EmailField("email", "podaj Email");
+var Check1 = new CheckboxField("box1", "Czy masz ukończone 18 lat");
+var SelektBox = new SelectField("select", "Wybrany kierunek studiów");
+var TextAreaBox = new TextAreaField("TextArea1", " uwagi");
 //=====
 var App = /** @class */ (function () {
     function App() {

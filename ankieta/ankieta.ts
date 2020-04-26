@@ -40,13 +40,13 @@ class InputField implements Field {
     test1?.appendChild(this.div);
   }
   render(): HTMLElement {
-    return this.element;
+    return this.div;
   }
   getValue(): any {
     return this.element.value;
   }
 }
-const NameBox = new InputField("Name", "Imię");
+
 //-----
 class TextAreaField implements Field {
   name: string;
@@ -73,13 +73,13 @@ class TextAreaField implements Field {
     test2?.appendChild(this.div);
   }
   render(): HTMLElement {
-    return this.element;
+    return this.div;
   }
   getValue(): any {
     return this.element.value;
   }
 }
-const TextAreaBox = new TextAreaField("co polecasz", " TextAreaBox1");
+
 //------
 class DateField implements Field {
   name: string;
@@ -106,14 +106,13 @@ class DateField implements Field {
     test3?.appendChild(this.div);
   }
   render(): HTMLElement {
-    return this.element;
+    return this.div;
   }
   getValue(): any {
     return this.element.value;
   }
 }
 
-const DateBox = new DateField("Data", "data");
 //-----
 class EmailField implements Field {
   name: string;
@@ -140,13 +139,13 @@ class EmailField implements Field {
     test4?.appendChild(this.div);
   }
   render(): HTMLElement {
-    return this.element;
+    return this.div;
   }
   getValue(): any {
     return this.element.value;
   }
 }
-const EmailBox = new EmailField("email", "podaj Email");
+
 //---
 class SelectField implements Field {
   name: string;
@@ -173,13 +172,13 @@ class SelectField implements Field {
     test5?.appendChild(this.div);
   }
   render(): HTMLElement {
-    return this.element;
+    return this.div;
   }
   getValue(): any {
     return this.element.value;
   }
 }
-const SelektBox = new SelectField("cos", "Iddds");
+
 //-------------
 
 class CheckboxField implements Field {
@@ -207,14 +206,20 @@ class CheckboxField implements Field {
     test6?.appendChild(this.div);
   }
   render(): HTMLElement {
-    return this.element;
+    return this.div;
   }
   getValue(): any {
     return this.element.value;
   }
 }
-const Check1 = new CheckboxField("box1", "Imię");
+const NameBox = new InputField("Name", "Imię");
+const NameBox2 = new InputField("Surname", "Nazwisko");
+const DateBox = new DateField("Data", "data urodzenia");
+const EmailBox = new EmailField("email", "podaj Email");
 
+const Check1 = new CheckboxField("box1", "Czy masz ukończone 18 lat");
+const SelektBox = new SelectField("select", "Wybrany kierunek studiów");
+const TextAreaBox = new TextAreaField("TextArea1", " uwagi");
 //=====
 
 class App {
@@ -229,6 +234,7 @@ class Form {
   formElement: HTMLElement;
   constructor(id: string) {
     this.fields = new Array();
+
     this.formElement = document.getElementById(id);
   }
 
