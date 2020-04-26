@@ -172,7 +172,24 @@ var Form = /** @class */ (function () {
         this.TextAreaBox = new TextAreaField("TextArea1", " uwagi");
         this.formElement = document.getElementById(id);
     }
-    Form.prototype.render = function () { };
-    Form.prototype.getValue = function () { };
+    Form.prototype.render = function () {
+        this.NameBox.render();
+        this.NameBox2.render();
+        this.DateBox.render();
+        this.EmailBox.render();
+        this.Check1.render();
+        this.SelektBox.render();
+        this.TextAreaBox.render();
+    };
+    Form.prototype.getValue = function () {
+        this.NameBox.getValue();
+        this.NameBox2.getValue();
+        this.DateBox.getValue();
+        this.EmailBox.getValue();
+        this.Check1.getValue();
+        this.SelektBox.getValue();
+        this.TextAreaBox.getValue();
+    };
     return Form;
 }());
+var formCreate = new App();

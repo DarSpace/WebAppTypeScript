@@ -255,7 +255,25 @@ class Form {
     this.formElement = document.getElementById(id);
   }
 
-  render(): void {}
+  render(): void {
+    this.NameBox.render();
+    this.NameBox2.render();
+    this.DateBox.render();
+    this.EmailBox.render();
+    this.Check1.render();
+    this.SelektBox.render();
+    this.TextAreaBox.render();
+  }
 
-  getValue(): void {}
+  getValue(): void {
+    this.NameBox.getValue();
+    this.NameBox2.getValue();
+    this.DateBox.getValue();
+    this.EmailBox.getValue();
+    this.Check1.getValue();
+    this.SelektBox.getValue();
+    this.TextAreaBox.getValue();
+  }
 }
+
+const formCreate = new App();
