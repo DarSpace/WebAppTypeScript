@@ -142,13 +142,17 @@ var CheckboxField = /** @class */ (function () {
     };
     return CheckboxField;
 }());
-var NameBox = new InputField("Name", "Imię");
-var NameBox2 = new InputField("Surname", "Nazwisko");
-var DateBox = new DateField("Data", "data urodzenia");
-var EmailBox = new EmailField("email", "podaj Email");
-var Check1 = new CheckboxField("box1", "Czy masz ukończone 18 lat");
-var SelektBox = new SelectField("select", "Wybrany kierunek studiów");
-var TextAreaBox = new TextAreaField("TextArea1", " uwagi");
+/*
+function  createBox() {
+const NameBox = new InputField("Name", "Imię");
+const NameBox2 = new InputField("Surname", "Nazwisko");
+const DateBox = new DateField("Data", "data urodzenia");
+const EmailBox = new EmailField("email", "podaj Email");
+const Check1 = new CheckboxField("box1", "Czy masz ukończone 18 lat");
+const SelektBox = new SelectField("select", "Wybrany kierunek studiów");
+const TextAreaBox = new TextAreaField("TextArea1", " uwagi");
+*/
+//};
 //=====
 var App = /** @class */ (function () {
     function App() {
@@ -159,6 +163,13 @@ var App = /** @class */ (function () {
 var Form = /** @class */ (function () {
     function Form(id) {
         this.fields = new Array();
+        this.NameBox = new InputField("Name", "Imię");
+        this.NameBox2 = new InputField("Surname", "Nazwisko");
+        this.DateBox = new DateField("Data", "data urodzenia");
+        this.EmailBox = new EmailField("email", "podaj Email");
+        this.Check1 = new CheckboxField("box1", "Czy masz ukończone 18 lat");
+        this.SelektBox = new SelectField("select", "Wybrany kierunek studiów");
+        this.TextAreaBox = new TextAreaField("TextArea1", " uwagi");
         this.formElement = document.getElementById(id);
     }
     Form.prototype.render = function () { };

@@ -212,14 +212,18 @@ class CheckboxField implements Field {
     return this.element.value;
   }
 }
+
+/*
+function  createBox() {
 const NameBox = new InputField("Name", "Imię");
 const NameBox2 = new InputField("Surname", "Nazwisko");
 const DateBox = new DateField("Data", "data urodzenia");
 const EmailBox = new EmailField("email", "podaj Email");
-
 const Check1 = new CheckboxField("box1", "Czy masz ukończone 18 lat");
 const SelektBox = new SelectField("select", "Wybrany kierunek studiów");
 const TextAreaBox = new TextAreaField("TextArea1", " uwagi");
+*/
+//};
 //=====
 
 class App {
@@ -232,9 +236,22 @@ class App {
 class Form {
   fields: Field[];
   formElement: HTMLElement;
+  NameBox: InputField;
+  NameBox2: InputField;
+  DateBox: DateField;
+  EmailBox: EmailField;
+  Check1: CheckboxField;
+  SelektBox: SelectField;
+  TextAreaBox: TextAreaField;
   constructor(id: string) {
     this.fields = new Array();
-
+    this.NameBox = new InputField("Name", "Imię");
+    this.NameBox2 = new InputField("Surname", "Nazwisko");
+    this.DateBox = new DateField("Data", "data urodzenia");
+    this.EmailBox = new EmailField("email", "podaj Email");
+    this.Check1 = new CheckboxField("box1", "Czy masz ukończone 18 lat");
+    this.SelektBox = new SelectField("select", "Wybrany kierunek studiów");
+    this.TextAreaBox = new TextAreaField("TextArea1", " uwagi");
     this.formElement = document.getElementById(id);
   }
 
