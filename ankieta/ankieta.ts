@@ -163,11 +163,11 @@ class SelectField implements Field {
     this.name = name;
     this.labelhtml = <HTMLLabelElement>document.createElement("label");
     this.option1 = <HTMLOptionElement>document.createElement("option");
-    this.option1.innerHTML = "AGH";
-    this.option1.value = "AGH";
+    // this.option1.innerHTML = "AGH";
+    // this.option1.value = "AGH";
     this.option2 = <HTMLOptionElement>document.createElement("option");
-    this.option2.innerHTML = "UJ";
-    this.option2.value = "UJ";
+    // this.option2.innerHTML = "UJ";
+    // this.option2.value = "UJ";
     this.element.appendChild(this.option1);
     this.element.appendChild(this.option2);
     this.labelhtml.innerHTML = label;
@@ -227,6 +227,7 @@ class DescriptionBox {
   element: HTMLInputElement;
   labelhtml: HTMLLabelElement;
   div: HTMLElement;
+
   nameBox: HTMLElement;
   surname: HTMLElement;
   date: HTMLElement;
@@ -246,27 +247,43 @@ class DescriptionBox {
   ) {
     this.div = <HTMLElement>document.createElement("div");
     this.nameBox = <HTMLElement>document.createElement("div");
-    this.nameBox.append("Imię: " + name);
+    this.nameBox.append(Z1 + name);
     this.surname = <HTMLElement>document.createElement("div");
-    this.surname.append("Nazwisko: " + surname);
+    this.surname.append(Z2 + surname);
     this.date = <HTMLElement>document.createElement("div");
-    this.date.append("Data Urodzenia: " + data);
+    this.date.append(Z3 + data);
     this.email = <HTMLElement>document.createElement("div");
-    this.email.append("Email: " + email);
+    this.email.append(Z4 + email);
     this.checkBox = <HTMLElement>document.createElement("div");
-    this.checkBox.append("Czy masz ukończone 18 lat: " + checkBox);
+    this.checkBox.append(Z5 + checkBox);
     this.selectBox = <HTMLElement>document.createElement("div");
-    this.selectBox.append("Wybrana uczelnia to: " + select);
+    this.selectBox.append(Z6 + select);
     this.textArea = <HTMLElement>document.createElement("div");
-    this.textArea.append("uwagi: " + uwagi);
+    this.textArea.append(Z7 + uwagi);
+    /*
+    this.div.appendChild(
+      this.nameBox &&
+        this.surname &&
+        this.date &&
+        this.email &&
+        this.checkBox &&
+        this.selectBox &&
+        this.textArea
+    ); */
 
-    this.div.appendChild(this.nameBox);
-    this.div.appendChild(this.surname);
-    this.div.appendChild(this.date);
-    this.div.appendChild(this.email);
-    this.div.appendChild(this.checkBox);
-    this.div.appendChild(this.selectBox);
-    this.div.appendChild(this.textArea);
+    this.div
+      .appendChild(this.nameBox)
+      .appendChild(this.surname)
+      .appendChild(this.date)
+      .appendChild(this.email)
+      .appendChild(this.checkBox)
+      .appendChild(this.selectBox)
+      .appendChild(this.textArea);
+    // this.div.appendChild(this.date);
+    //this.div.appendChild(this.email);
+    // this.div.appendChild(this.checkBox);
+    //this.div.appendChild(this.selectBox);
+    //this.div.appendChild(this.textArea);
 
     const test6 = document.querySelector("#formEnd");
     test6?.appendChild(this.div);
@@ -293,6 +310,14 @@ class App {
   }
 }
 
+const Z1 = " Imię: ";
+const Z2 = " Nazwisko: ";
+const Z3 = " Data urodzenia: ";
+const Z4 = " Email: ";
+const Z5 = " Ukończone 18 lat: ";
+const Z6 = " Wybrany kierunek studiów: ";
+const Z7 = " Uwagi: ";
+
 class Form {
   fields: Field[];
   formElement: HTMLElement;
@@ -307,13 +332,13 @@ class Form {
   constructor(id: string) {
     this.fields = new Array();
     this.prevValues = new Array();
-    this.NameBox = new InputField("Name", "Imię");
-    this.NameBox2 = new InputField("Surname", "Nazwisko");
-    this.DateBox = new DateField("Data", "data urodzenia");
-    this.EmailBox = new EmailField("email", "podaj Email");
-    this.Check1 = new CheckboxField("box1", "Czy masz ukończone 18 lat");
-    this.SelektBox = new SelectField("select", "Wybrany kierunek studiów");
-    this.TextAreaBox = new TextAreaField("TextArea1", " uwagi");
+    this.NameBox = new InputField("Name", Z1);
+    this.NameBox2 = new InputField("Surname", Z2);
+    this.DateBox = new DateField("Data", Z3);
+    this.EmailBox = new EmailField("email", Z4);
+    this.Check1 = new CheckboxField("box1", Z5);
+    this.SelektBox = new SelectField("select", Z6);
+    this.TextAreaBox = new TextAreaField("TextArea1", Z7);
     //this.formElement = document.getElementById(id);
   }
   /*
