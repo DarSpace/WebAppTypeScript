@@ -185,9 +185,9 @@ var DescriptionBox = /** @class */ (function () {
         this.removeButton();
     }
     DescriptionBox.prototype.removeButton = function () {
-        var self = this;
+        var _this = this;
         this.button2.addEventListener("click", function (e) {
-            self.div.remove();
+            _this.div.remove();
         });
     };
     return DescriptionBox;

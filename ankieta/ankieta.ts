@@ -282,9 +282,8 @@ class DescriptionBox {
   }
 
   removeButton(): void {
-    const self = this;
     this.button2.addEventListener("click", (e) => {
-      self.div.remove();
+      this.div.remove();
     });
   }
 }
