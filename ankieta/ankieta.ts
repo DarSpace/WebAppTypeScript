@@ -227,6 +227,8 @@ class DescriptionBox {
   element: HTMLInputElement;
   labelhtml: HTMLLabelElement;
   div: HTMLElement;
+  button2: HTMLElement;
+  box: HTMLElement;
 
   nameBox: HTMLElement;
   surname: HTMLElement;
@@ -260,17 +262,9 @@ class DescriptionBox {
     this.selectBox.append(Z6 + select);
     this.textArea = <HTMLElement>document.createElement("div");
     this.textArea.append(Z7 + uwagi);
-    /*
-    this.div.appendChild(
-      this.nameBox &&
-        this.surname &&
-        this.date &&
-        this.email &&
-        this.checkBox &&
-        this.selectBox &&
-        this.textArea
-    ); */
-
+    this.box = <HTMLElement>document.createElement("div");
+    this.button2 = <HTMLElement>document.createElement("button");
+    this.button2.innerText = "remove";
     this.div
       .appendChild(this.nameBox)
       .appendChild(this.surname)
@@ -278,15 +272,20 @@ class DescriptionBox {
       .appendChild(this.email)
       .appendChild(this.checkBox)
       .appendChild(this.selectBox)
-      .appendChild(this.textArea);
-    // this.div.appendChild(this.date);
-    //this.div.appendChild(this.email);
-    // this.div.appendChild(this.checkBox);
-    //this.div.appendChild(this.selectBox);
-    //this.div.appendChild(this.textArea);
+      .appendChild(this.textArea)
+      .appendChild(this.box)
+      .appendChild(this.button2);
 
     const test6 = document.querySelector("#formEnd");
     test6?.appendChild(this.div);
+    this.removeButton();
+  }
+
+  removeButton(): void {
+    const self = this;
+    this.button2.addEventListener("click", (e) => {
+      self.div.remove();
+    });
   }
 }
 

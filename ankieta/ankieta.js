@@ -167,16 +167,9 @@ var DescriptionBox = /** @class */ (function () {
         this.selectBox.append(Z6 + select);
         this.textArea = document.createElement("div");
         this.textArea.append(Z7 + uwagi);
-        /*
-        this.div.appendChild(
-          this.nameBox &&
-            this.surname &&
-            this.date &&
-            this.email &&
-            this.checkBox &&
-            this.selectBox &&
-            this.textArea
-        ); */
+        this.box = document.createElement("div");
+        this.button2 = document.createElement("button");
+        this.button2.innerText = "remove";
         this.div
             .appendChild(this.nameBox)
             .appendChild(this.surname)
@@ -184,15 +177,19 @@ var DescriptionBox = /** @class */ (function () {
             .appendChild(this.email)
             .appendChild(this.checkBox)
             .appendChild(this.selectBox)
-            .appendChild(this.textArea);
-        // this.div.appendChild(this.date);
-        //this.div.appendChild(this.email);
-        // this.div.appendChild(this.checkBox);
-        //this.div.appendChild(this.selectBox);
-        //this.div.appendChild(this.textArea);
+            .appendChild(this.textArea)
+            .appendChild(this.box)
+            .appendChild(this.button2);
         var test6 = document.querySelector("#formEnd");
         test6 === null || test6 === void 0 ? void 0 : test6.appendChild(this.div);
+        this.removeButton();
     }
+    DescriptionBox.prototype.removeButton = function () {
+        var self = this;
+        this.button2.addEventListener("click", function (e) {
+            self.div.remove();
+        });
+    };
     return DescriptionBox;
 }());
 //=====
