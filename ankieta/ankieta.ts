@@ -286,6 +286,24 @@ class DescriptionBox {
       this.div.remove();
     });
   }
+
+  serialize() {
+    const values = {
+      name: this.name,
+      label: this.label,
+      type: this.type,
+      element: this.element,
+      labelhtml: this.labelhtml,
+      nameBox: this.nameBox.append(Z1 + name),
+      surname: this.surname,
+      date: this.date,
+      email: this.email,
+      checkBox: this.checkBox,
+      selectBox: this.selectBox,
+      textArea: this.textArea,
+    };
+    return JSON.stringify(values);
+  }
 }
 
 //=====
@@ -327,6 +345,7 @@ class Form {
   SelektBox: SelectField;
   TextAreaBox: TextAreaField;
   prevValues: DescriptionBox[];
+  ID: Number = 0;
   constructor(id: string) {
     this.fields = new Array();
     this.prevValues = new Array();

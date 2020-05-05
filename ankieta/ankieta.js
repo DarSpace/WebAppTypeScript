@@ -190,6 +190,23 @@ var DescriptionBox = /** @class */ (function () {
             _this.div.remove();
         });
     };
+    DescriptionBox.prototype.serialize = function () {
+        var values = {
+            name: this.name,
+            label: this.label,
+            type: this.type,
+            element: this.element,
+            labelhtml: this.labelhtml,
+            nameBox: this.nameBox.append(Z1 + name),
+            surname: this.surname,
+            date: this.date,
+            email: this.email,
+            checkBox: this.checkBox,
+            selectBox: this.selectBox,
+            textArea: this.textArea
+        };
+        return JSON.stringify(values);
+    };
     return DescriptionBox;
 }());
 //=====
@@ -219,6 +236,7 @@ var Z6 = " Wybrany kierunek studiów: ";
 var Z7 = " Uwagi: ";
 var Form = /** @class */ (function () {
     function Form(id) {
+        this.ID = 0;
         this.fields = new Array();
         this.prevValues = new Array();
         this.NameBox = new InputField("Name", Z1);
