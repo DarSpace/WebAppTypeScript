@@ -151,22 +151,22 @@ var CheckboxField = /** @class */ (function () {
     return CheckboxField;
 }());
 var DescriptionBox = /** @class */ (function () {
-    function DescriptionBox(name, surname, data, email, checkBox, select, uwagi) {
+    function DescriptionBox(nameBox, surname, date, email, checkBox, selectBox, textArea) {
         this.div = document.createElement("div");
         this.nameBox = document.createElement("div");
-        this.nameBox.append(Z1 + name);
+        this.nameBox.append(Z1 + nameBox);
         this.surname = document.createElement("div");
         this.surname.append(Z2 + surname);
         this.date = document.createElement("div");
-        this.date.append(Z3 + data);
+        this.date.append(Z3 + date);
         this.email = document.createElement("div");
         this.email.append(Z4 + email);
         this.checkBox = document.createElement("div");
         this.checkBox.append(Z5 + checkBox);
         this.selectBox = document.createElement("div");
-        this.selectBox.append(Z6 + select);
+        this.selectBox.append(Z6 + selectBox);
         this.textArea = document.createElement("div");
-        this.textArea.append(Z7 + uwagi);
+        this.textArea.append(Z7 + textArea);
         this.box = document.createElement("div");
         this.button2 = document.createElement("button");
         this.button2.innerText = "remove";
@@ -190,25 +190,9 @@ var DescriptionBox = /** @class */ (function () {
             _this.div.remove();
         });
     };
-    DescriptionBox.prototype.serialize = function () {
-        var values = {
-            name: this.name,
-            label: this.label,
-            type: this.type,
-            element: this.element,
-            labelhtml: this.labelhtml,
-            nameBox: this.nameBox.append(Z1 + name),
-            surname: this.surname,
-            date: this.date,
-            email: this.email,
-            checkBox: this.checkBox,
-            selectBox: this.selectBox,
-            textArea: this.textArea
-        };
-        return JSON.stringify(values);
-    };
     return DescriptionBox;
 }());
+//const serializedValue = descriptionBox.serialize();
 //=====
 var App = /** @class */ (function () {
     function App() {
@@ -279,3 +263,5 @@ var Form = /** @class */ (function () {
     return Form;
 }());
 var formCreate = new App();
+//const serializedValue = descriptionBox.serialize();
+//localStorage.setItem("values", serializedValue);

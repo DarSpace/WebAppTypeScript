@@ -221,6 +221,7 @@ class CheckboxField implements Field {
 }
 
 class DescriptionBox {
+  local: Field[];
   name: string;
   label: string;
   type: FieldType;
@@ -239,29 +240,29 @@ class DescriptionBox {
   textArea: HTMLElement;
 
   constructor(
-    name: string,
+    nameBox: string,
     surname: string,
-    data: Date,
+    date: Date,
     email: string,
     checkBox: boolean,
-    select: string,
-    uwagi: string
+    selectBox: string,
+    textArea: string
   ) {
     this.div = <HTMLElement>document.createElement("div");
     this.nameBox = <HTMLElement>document.createElement("div");
-    this.nameBox.append(Z1 + name);
+    this.nameBox.append(Z1 + nameBox);
     this.surname = <HTMLElement>document.createElement("div");
     this.surname.append(Z2 + surname);
     this.date = <HTMLElement>document.createElement("div");
-    this.date.append(Z3 + data);
+    this.date.append(Z3 + date);
     this.email = <HTMLElement>document.createElement("div");
     this.email.append(Z4 + email);
     this.checkBox = <HTMLElement>document.createElement("div");
     this.checkBox.append(Z5 + checkBox);
     this.selectBox = <HTMLElement>document.createElement("div");
-    this.selectBox.append(Z6 + select);
+    this.selectBox.append(Z6 + selectBox);
     this.textArea = <HTMLElement>document.createElement("div");
-    this.textArea.append(Z7 + uwagi);
+    this.textArea.append(Z7 + textArea);
     this.box = <HTMLElement>document.createElement("div");
     this.button2 = <HTMLElement>document.createElement("button");
     this.button2.innerText = "remove";
@@ -287,24 +288,44 @@ class DescriptionBox {
     });
   }
 
+  /*
+
   serialize() {
+  
     const values = {
-      name: this.name,
-      label: this.label,
-      type: this.type,
-      element: this.element,
-      labelhtml: this.labelhtml,
-      nameBox: this.nameBox.append(Z1 + name),
-      surname: this.surname,
-      date: this.date,
-      email: this.email,
-      checkBox: this.checkBox,
-      selectBox: this.selectBox,
-      textArea: this.textArea,
+      //name: this.name,
+      //label: this.label,
+    //  type: this.type,
+     // element: this.element.innerHTML,
+      // labelhtml: this.labelhtml,
+      nameBox: this.nameBox.innerHTML,
+      surname: this.surname.innerHTML,
+      date: this.date.innerHTML,
+      email: this.email.innerHTML,
+      checkBox: this.checkBox.innerHTML,
+      selectBox: this.selectBox.innerHTML,
+      textArea: this.textArea.innerHTML,
     };
+    const descriptionBox = new DescriptionBox(
+      this.nameBox.innerHTML,
+      this.surname.innerHTML,
+      
+      this.date.,
+      this.email.innerHTML,
+      this.checkBox.boolean,
+      this.selectBox.innerHTML,
+      this.textArea.innerHTML
+    ); 
+  
     return JSON.stringify(values);
+    
   }
+  
+  
 }
+*/
+}
+//const serializedValue = descriptionBox.serialize();
 
 //=====
 
@@ -312,6 +333,7 @@ class App {
   form: any;
   constructor() {
     this.form = new Form("1");
+
     this.createButton();
   }
 
@@ -401,3 +423,6 @@ class Form {
 }
 
 const formCreate = new App();
+
+//const serializedValue = descriptionBox.serialize();
+//localStorage.setItem("values", serializedValue);
