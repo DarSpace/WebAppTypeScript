@@ -158,6 +158,7 @@ class SelectField implements Field {
   div: HTMLElement;
 
   constructor(name: string, label: string) {
+    // trzeci parametr tablica
     this.div = <HTMLElement>document.createElement("div");
     this.element = <HTMLSelectElement>document.createElement("select");
     this.name = name;
@@ -287,45 +288,7 @@ class DescriptionBox {
       this.div.remove();
     });
   }
-
-  /*
-
-  serialize() {
-  
-    const values = {
-      //name: this.name,
-      //label: this.label,
-    //  type: this.type,
-     // element: this.element.innerHTML,
-      // labelhtml: this.labelhtml,
-      nameBox: this.nameBox.innerHTML,
-      surname: this.surname.innerHTML,
-      date: this.date.innerHTML,
-      email: this.email.innerHTML,
-      checkBox: this.checkBox.innerHTML,
-      selectBox: this.selectBox.innerHTML,
-      textArea: this.textArea.innerHTML,
-    };
-    const descriptionBox = new DescriptionBox(
-      this.nameBox.innerHTML,
-      this.surname.innerHTML,
-      
-      this.date.,
-      this.email.innerHTML,
-      this.checkBox.boolean,
-      this.selectBox.innerHTML,
-      this.textArea.innerHTML
-    ); 
-  
-    return JSON.stringify(values);
-    
-  }
-  
-  
 }
-*/
-}
-//const serializedValue = descriptionBox.serialize();
 
 //=====
 
@@ -357,6 +320,7 @@ const Z6 = " Wybrany kierunek studiów: ";
 const Z7 = " Uwagi: ";
 
 class Form {
+  // zrobic to tablica
   fields: Field[];
   formElement: HTMLElement;
   NameBox: InputField;
@@ -419,6 +383,8 @@ class Form {
         this.TextAreaBox.getValue()
       )
     );
+    let data = JSON.stringify(this.prevValues);
+    window.localStorage.setItem("data", data);
   }
 }
 

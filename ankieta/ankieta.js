@@ -100,6 +100,7 @@ var EmailField = /** @class */ (function () {
 //---
 var SelectField = /** @class */ (function () {
     function SelectField(name, label) {
+        // trzeci parametr tablica
         this.div = document.createElement("div");
         this.element = document.createElement("select");
         this.name = name;
@@ -192,7 +193,6 @@ var DescriptionBox = /** @class */ (function () {
     };
     return DescriptionBox;
 }());
-//const serializedValue = descriptionBox.serialize();
 //=====
 var App = /** @class */ (function () {
     function App() {
@@ -259,6 +259,8 @@ var Form = /** @class */ (function () {
         console.log(this.SelektBox.getValue());
         console.log(this.TextAreaBox.getValue());
         this.prevValues.push(new DescriptionBox(this.NameBox.getValue(), this.NameBox2.getValue(), this.DateBox.getValue(), this.EmailBox.getValue(), this.Check1.getValue(), this.SelektBox.getValue(), this.TextAreaBox.getValue()));
+        var data = JSON.stringify(this.prevValues);
+        window.localStorage.setItem("data", data);
     };
     return Form;
 }());
