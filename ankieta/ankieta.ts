@@ -332,6 +332,7 @@ class Form {
   TextAreaBox: TextAreaField;
   prevValues: DescriptionBox[];
   ID: Number = 0;
+
   constructor(id: string) {
     this.fields = new Array();
     this.prevValues = new Array();
