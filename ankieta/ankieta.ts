@@ -251,19 +251,19 @@ class DescriptionBox {
   ) {
     this.div = <HTMLElement>document.createElement("div");
     this.nameBox = <HTMLElement>document.createElement("div");
-    this.nameBox.append(Z1 + nameBox);
+    this.nameBox.append(" Imię: " + nameBox);
     this.surname = <HTMLElement>document.createElement("div");
-    this.surname.append(Z2 + surname);
+    this.surname.append(" Nazwisko: " + surname);
     this.date = <HTMLElement>document.createElement("div");
-    this.date.append(Z3 + date);
+    this.date.append(" Data urodzenia: " + date);
     this.email = <HTMLElement>document.createElement("div");
-    this.email.append(Z4 + email);
+    this.email.append(" Email: " + email);
     this.checkBox = <HTMLElement>document.createElement("div");
-    this.checkBox.append(Z5 + checkBox);
+    this.checkBox.append(" Ukończone 18 lat: " + checkBox);
     this.selectBox = <HTMLElement>document.createElement("div");
-    this.selectBox.append(Z6 + selectBox);
+    this.selectBox.append(" Wybrany kierunek studiów: " + selectBox);
     this.textArea = <HTMLElement>document.createElement("div");
-    this.textArea.append(Z7 + textArea);
+    this.textArea.append(" Uwagi: " + textArea);
     this.box = <HTMLElement>document.createElement("div");
     this.button2 = <HTMLElement>document.createElement("button");
     this.button2.innerText = "remove";
@@ -295,18 +295,8 @@ class DescriptionBox {
 class App {
   form: any;
   constructor() {
-    /*this.form = new Form(
-      "1",
-      "name",
-      "coś2",
-      "data",
-      "mail",
-      " ceckbox",
-      "textbox",
-      "dsa"
-    ); */
+    this.form = new Form("1");
 
-    this.form = new Form();
     this.createButton();
   }
 
@@ -320,14 +310,6 @@ class App {
     });
   }
 }
-
-const Z1 = " Imię: ";
-const Z2 = " Nazwisko: ";
-const Z3 = " Data urodzenia: ";
-const Z4 = " Email: ";
-const Z5 = " Ukończone 18 lat: ";
-const Z6 = " Wybrany kierunek studiów: ";
-const Z7 = " Uwagi: ";
 
 class Form {
   // zrobic to tablica
@@ -343,19 +325,10 @@ class Form {
   prevValues: DescriptionBox[];
   ID: Number = 0;
 
-  constructor(
-    id: string,
-    NameBox: InputField,
-    NameBox2: InputField,
-    DateBox: DateField,
-    EmailBox: EmailField,
-    Check1: CheckboxField,
-    SelektBox: SelectField,
-    TextAreaBox: TextAreaField
-  ) {
-    //this.fields = new Array();
+  constructor(id: string) {
+    this.fields = new Array();
     this.prevValues = new Array();
-    this.NameBox = new InputField("Name", Z1);
+    /* this.NameBox = new InputField("Name", Z1);
     this.NameBox2 = new InputField("Surname", Z2);
     this.DateBox = new DateField("Data", Z3);
     this.EmailBox = new EmailField("email", Z4);
@@ -363,7 +336,20 @@ class Form {
     this.SelektBox = new SelectField("select", Z6);
     this.TextAreaBox = new TextAreaField("TextArea1", Z7);
 
-    this.fields = new Array();
+
+
+*/
+
+    this.fields = new Array(
+      new InputField("Name", " Imię: ") as Field,
+      new InputField("Surname", " Nazwisko: ") as Field,
+      new DateField("Data", " Data urodzenia: ") as Field,
+      new EmailField("email", " Email: ") as Field,
+      new CheckboxField("box1", " Ukończone 18 lat: ") as Field,
+      new SelectField("select", " Wybrany kierunek studiów: ") as Field,
+      new TextAreaField("TextArea1", " Uwagi: ") as Field
+    );
+
     //this.formElement = document.getElementById(id);
   }
   /*
@@ -376,7 +362,10 @@ class Form {
     this.SelektBox.render();
     this.TextAreaBox.render();
   }
+
+
 */
+
   showValues(): void {
     this.NameBox.getValue();
     this.NameBox2.getValue();
@@ -411,4 +400,3 @@ class Form {
 }
 
 const formCreate = new App();
-//const form = new Form("1", "nam2e","coś2", "data","mail", " ceckbox","textbox", "dsa");

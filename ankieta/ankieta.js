@@ -155,19 +155,19 @@ var DescriptionBox = /** @class */ (function () {
     function DescriptionBox(nameBox, surname, date, email, checkBox, selectBox, textArea) {
         this.div = document.createElement("div");
         this.nameBox = document.createElement("div");
-        this.nameBox.append(Z1 + nameBox);
+        this.nameBox.append(" Imię: " + nameBox);
         this.surname = document.createElement("div");
-        this.surname.append(Z2 + surname);
+        this.surname.append(" Nazwisko: " + surname);
         this.date = document.createElement("div");
-        this.date.append(Z3 + date);
+        this.date.append(" Data urodzenia: " + date);
         this.email = document.createElement("div");
-        this.email.append(Z4 + email);
+        this.email.append(" Email: " + email);
         this.checkBox = document.createElement("div");
-        this.checkBox.append(Z5 + checkBox);
+        this.checkBox.append(" Ukończone 18 lat: " + checkBox);
         this.selectBox = document.createElement("div");
-        this.selectBox.append(Z6 + selectBox);
+        this.selectBox.append(" Wybrany kierunek studiów: " + selectBox);
         this.textArea = document.createElement("div");
-        this.textArea.append(Z7 + textArea);
+        this.textArea.append(" Uwagi: " + textArea);
         this.box = document.createElement("div");
         this.button2 = document.createElement("button");
         this.button2.innerText = "remove";
@@ -211,26 +211,23 @@ var App = /** @class */ (function () {
     };
     return App;
 }());
-var Z1 = " Imię: ";
-var Z2 = " Nazwisko: ";
-var Z3 = " Data urodzenia: ";
-var Z4 = " Email: ";
-var Z5 = " Ukończone 18 lat: ";
-var Z6 = " Wybrany kierunek studiów: ";
-var Z7 = " Uwagi: ";
 var Form = /** @class */ (function () {
-    function Form(id, NameBox, NameBox2, DateBox, EmailBox, Check1, SelektBox, TextAreaBox) {
+    function Form(id) {
         this.ID = 0;
-        //this.fields = new Array();
+        this.fields = new Array();
         this.prevValues = new Array();
-        this.NameBox = new InputField("Name", Z1);
+        /* this.NameBox = new InputField("Name", Z1);
         this.NameBox2 = new InputField("Surname", Z2);
         this.DateBox = new DateField("Data", Z3);
         this.EmailBox = new EmailField("email", Z4);
         this.Check1 = new CheckboxField("box1", Z5);
         this.SelektBox = new SelectField("select", Z6);
         this.TextAreaBox = new TextAreaField("TextArea1", Z7);
-        this.fields = new Array(NameBox, NameBox2, DateBox, EmailBox, Check1, SelektBox, TextAreaBox);
+    
+    
+    
+    */
+        this.fields = new Array(new InputField("Name", " Imię: "), new InputField("Surname", " Nazwisko: "), new DateField("Data", " Data urodzenia: "), new EmailField("email", " Email: "), new CheckboxField("box1", " Ukończone 18 lat: "), new SelectField("select", " Wybrany kierunek studiów: "), new TextAreaField("TextArea1", " Uwagi: "));
         //this.formElement = document.getElementById(id);
     }
     /*
@@ -243,6 +240,8 @@ var Form = /** @class */ (function () {
       this.SelektBox.render();
       this.TextAreaBox.render();
     }
+  
+  
   */
     Form.prototype.showValues = function () {
         this.NameBox.getValue();
@@ -266,5 +265,3 @@ var Form = /** @class */ (function () {
     return Form;
 }());
 var formCreate = new App();
-//const serializedValue = descriptionBox.serialize();
-//localStorage.setItem("values", serializedValue);
