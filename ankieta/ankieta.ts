@@ -164,11 +164,11 @@ class SelectField implements Field {
     this.name = name;
     this.labelhtml = <HTMLLabelElement>document.createElement("label");
     this.option1 = <HTMLOptionElement>document.createElement("option");
-    // this.option1.innerHTML = "AGH";
-    // this.option1.value = "AGH";
+    this.option1.innerHTML = "AGH";
+    this.option1.value = "AGH";
     this.option2 = <HTMLOptionElement>document.createElement("option");
-    // this.option2.innerHTML = "UJ";
-    // this.option2.value = "UJ";
+    this.option2.innerHTML = "UJ";
+    this.option2.value = "UJ";
     this.element.appendChild(this.option1);
     this.element.appendChild(this.option2);
     this.labelhtml.innerHTML = label;
@@ -295,8 +295,18 @@ class DescriptionBox {
 class App {
   form: any;
   constructor() {
-    this.form = new Form("1");
+    /*this.form = new Form(
+      "1",
+      "name",
+      "coś2",
+      "data",
+      "mail",
+      " ceckbox",
+      "textbox",
+      "dsa"
+    ); */
 
+    this.form = new Form();
     this.createButton();
   }
 
@@ -333,8 +343,17 @@ class Form {
   prevValues: DescriptionBox[];
   ID: Number = 0;
 
-  constructor(id: string) {
-    this.fields = new Array();
+  constructor(
+    id: string,
+    NameBox: InputField,
+    NameBox2: InputField,
+    DateBox: DateField,
+    EmailBox: EmailField,
+    Check1: CheckboxField,
+    SelektBox: SelectField,
+    TextAreaBox: TextAreaField
+  ) {
+    //this.fields = new Array();
     this.prevValues = new Array();
     this.NameBox = new InputField("Name", Z1);
     this.NameBox2 = new InputField("Surname", Z2);
@@ -343,6 +362,8 @@ class Form {
     this.Check1 = new CheckboxField("box1", Z5);
     this.SelektBox = new SelectField("select", Z6);
     this.TextAreaBox = new TextAreaField("TextArea1", Z7);
+
+    this.fields = new Array();
     //this.formElement = document.getElementById(id);
   }
   /*
@@ -390,6 +411,4 @@ class Form {
 }
 
 const formCreate = new App();
-
-//const serializedValue = descriptionBox.serialize();
-//localStorage.setItem("values", serializedValue);
+//const form = new Form("1", "nam2e","coś2", "data","mail", " ceckbox","textbox", "dsa");
