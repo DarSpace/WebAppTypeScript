@@ -154,23 +154,28 @@ class SelectField implements Field {
   element: HTMLSelectElement;
   labelhtml: HTMLLabelElement;
   option1: HTMLOptionElement;
-  option2: HTMLOptionElement;
+
   div: HTMLElement;
 
-  constructor(name: string, label: string) {
+  constructor(name: string, label: string, options: string[]) {
     // trzeci parametr tablica
+    options.push("agh", "uj", "wsei");
     this.div = <HTMLElement>document.createElement("div");
     this.element = <HTMLSelectElement>document.createElement("select");
     this.name = name;
     this.labelhtml = <HTMLLabelElement>document.createElement("label");
-    this.option1 = <HTMLOptionElement>document.createElement("option");
-    this.option1.innerHTML = "AGH";
-    this.option1.value = "AGH";
-    this.option2 = <HTMLOptionElement>document.createElement("option");
-    this.option2.innerHTML = "UJ";
-    this.option2.value = "UJ";
-    this.element.appendChild(this.option1);
-    this.element.appendChild(this.option2);
+    options.forEach((element) => {
+      this.option1 = <HTMLOptionElement>document.createElement("option");
+      this.option1.innerHTML = element;
+      this.option1.value = element;
+      this.element.appendChild(this.option1);
+    });
+    // this.option1 = <HTMLOptionElement>document.createElement("option");
+    //this.option1.innerHTML = "AGH";
+    //this.option1.value = "AGH";
+
+    //this.element.appendChild(this.option1);
+    //this.element.appendChild(this.option2);
     this.labelhtml.innerHTML = label;
     this.element.name = this.name;
     this.div.appendChild(this.labelhtml);
@@ -261,14 +266,14 @@ class DescriptionBox {
     this.button2.innerText = "remove";
     this.div;
 
-    // .appendChild(this.nameBox)
-    // .appendChild(this.surname)
-    // .appendChild(this.date)
-    // .appendChild(this.email)
-    // .appendChild(this.checkBox)
-    // .appendChild(this.selectBox)
-    // .appendChild(this.textArea)
-    // .appendChild(this.box)
+    //      .appendChild(this.nameBox)
+    //      .appendChild(this.surname)
+    //      .appendChild(this.date)
+    //      .appendChild(this.email)
+    //      .appendChild(this.checkBox)
+    //      .appendChild(this.selectBox)
+    //      .appendChild(this.textArea)
+    //      .appendChild(this.box)
     // .appendChild(this.button2);
 
     const test6 = document.querySelector("#formEnd");
@@ -324,13 +329,13 @@ class Form {
     this.prevValues = new Array();
 
     this.fields = new Array(
-      new InputField("Name", " Imię: ") as Field,
-      new InputField("Surname", " Nazwisko: ") as Field,
-      new DateField("Data", " Data urodzenia: ") as Field,
-      new EmailField("email", " Email: ") as Field,
-      new CheckboxField("box1", " Ukończone 18 lat: ") as Field,
-      new SelectField("select", " Wybrany kierunek studiów: ") as Field,
-      new TextAreaField("TextArea1", " uwagi: ") as Field
+      new InputField("Name:  ", " Imię: ") as Field,
+      new InputField("Surname: ", " Nazwisko: ") as Field,
+      new DateField("Data:  ", " Data urodzenia: ") as Field,
+      new EmailField("email: ", " Email: ") as Field,
+      new CheckboxField("box1: ", " Ukończone 18 lat: ") as Field,
+      new SelectField("select:  ", " Wybrany kierunek studiów: ", []) as Field,
+      new TextAreaField("TextArea1: ", " uwagi: ") as Field
     );
 
     //this.formElement = document.getElementById(id);
@@ -344,23 +349,40 @@ class Form {
     // this.Check1.render();
     // this.SelektBox.render();
     // this.TextAreaBox.render();
-
-    for (let j = 0; j < this.fields.length; j++) {
-      this.fields[j].render();
-      console.log(this.fields[j].render());
-    }
+    // const test6 = document.querySelector("#formEnd");
+    // for (let j = 0; j < this.fields.length; j++) {
+    //   this.fields[j].getValue();
+    //   console.log(this.fields[j].getValue());
+    // test6?.appendChild(this.fields[j].getValue());
   }
 
   showValues(): void {
+    let test6 = document.querySelector("#formEnd");
+    let boxAnkieta = document.createElement("div");
+    // let akapit = document.createElement("p");
     for (let i = 0; i < this.fields.length; i++) {
       this.fields[i].getValue();
       console.log(this.fields[i].getValue());
+      let akapit = document.createElement("p");
       this.prevValues.push(this.fields[i].getValue());
+      akapit.innerText = this.fields[i].name + "  " + this.fields[i].getValue();
+      boxAnkieta?.appendChild(akapit);
     }
+    test6?.appendChild(boxAnkieta);
+    let button2 = <HTMLElement>document.createElement("button");
+    button2.innerText = "remove";
+    button2.addEventListener("click", (e) => {
+      boxAnkieta.remove();
+      window.localStorage.removeItem("data"); // <--
+    });
+    boxAnkieta?.appendChild(button2);
 
+    // zapisywanie do local storage
     let data = JSON.stringify(this.prevValues);
     window.localStorage.setItem("data", data);
   }
 }
 
 const formCreate = new App();
+//  let data = JSON.stringify(this.prevValues);
+//     window.localStorage.setItem("data", data);

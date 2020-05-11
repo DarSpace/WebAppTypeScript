@@ -99,20 +99,25 @@ var EmailField = /** @class */ (function () {
 }());
 //---
 var SelectField = /** @class */ (function () {
-    function SelectField(name, label) {
+    function SelectField(name, label, options) {
+        var _this = this;
         // trzeci parametr tablica
+        options.push("agh", "uj", "wsei");
         this.div = document.createElement("div");
         this.element = document.createElement("select");
         this.name = name;
         this.labelhtml = document.createElement("label");
-        this.option1 = document.createElement("option");
-        this.option1.innerHTML = "AGH";
-        this.option1.value = "AGH";
-        this.option2 = document.createElement("option");
-        this.option2.innerHTML = "UJ";
-        this.option2.value = "UJ";
-        this.element.appendChild(this.option1);
-        this.element.appendChild(this.option2);
+        options.forEach(function (element) {
+            _this.option1 = document.createElement("option");
+            _this.option1.innerHTML = element;
+            _this.option1.value = element;
+            _this.element.appendChild(_this.option1);
+        });
+        // this.option1 = <HTMLOptionElement>document.createElement("option");
+        //this.option1.innerHTML = "AGH";
+        //this.option1.value = "AGH";
+        //this.element.appendChild(this.option1);
+        //this.element.appendChild(this.option2);
         this.labelhtml.innerHTML = label;
         this.element.name = this.name;
         this.div.appendChild(this.labelhtml);
@@ -172,14 +177,14 @@ var DescriptionBox = /** @class */ (function () {
         this.button2 = document.createElement("button");
         this.button2.innerText = "remove";
         this.div;
-        // .appendChild(this.nameBox)
-        // .appendChild(this.surname)
-        // .appendChild(this.date)
-        // .appendChild(this.email)
-        // .appendChild(this.checkBox)
-        // .appendChild(this.selectBox)
-        // .appendChild(this.textArea)
-        // .appendChild(this.box)
+        //      .appendChild(this.nameBox)
+        //      .appendChild(this.surname)
+        //      .appendChild(this.date)
+        //      .appendChild(this.email)
+        //      .appendChild(this.checkBox)
+        //      .appendChild(this.selectBox)
+        //      .appendChild(this.textArea)
+        //      .appendChild(this.box)
         // .appendChild(this.button2);
         var test6 = document.querySelector("#formEnd");
         test6 === null || test6 === void 0 ? void 0 : test6.appendChild(this.div);
@@ -216,7 +221,7 @@ var Form = /** @class */ (function () {
     function Form(id) {
         this.ID = 0;
         this.prevValues = new Array();
-        this.fields = new Array(new InputField("Name", " Imię: "), new InputField("Surname", " Nazwisko: "), new DateField("Data", " Data urodzenia: "), new EmailField("email", " Email: "), new CheckboxField("box1", " Ukończone 18 lat: "), new SelectField("select", " Wybrany kierunek studiów: "), new TextAreaField("TextArea1", " uwagi: "));
+        this.fields = new Array(new InputField("Name:  ", " Imię: "), new InputField("Surname: ", " Nazwisko: "), new DateField("Data:  ", " Data urodzenia: "), new EmailField("email: ", " Email: "), new CheckboxField("box1: ", " Ukończone 18 lat: "), new SelectField("select:  ", " Wybrany kierunek studiów: ", []), new TextAreaField("TextArea1: ", " uwagi: "));
         //this.formElement = document.getElementById(id);
     }
     Form.prototype.render = function () {
@@ -227,20 +232,38 @@ var Form = /** @class */ (function () {
         // this.Check1.render();
         // this.SelektBox.render();
         // this.TextAreaBox.render();
-        for (var j = 0; j < this.fields.length; j++) {
-            this.fields[j].render();
-            console.log(this.fields[j].render());
-        }
+        // const test6 = document.querySelector("#formEnd");
+        // for (let j = 0; j < this.fields.length; j++) {
+        //   this.fields[j].getValue();
+        //   console.log(this.fields[j].getValue());
+        // test6?.appendChild(this.fields[j].getValue());
     };
     Form.prototype.showValues = function () {
+        var test6 = document.querySelector("#formEnd");
+        var boxAnkieta = document.createElement("div");
+        // let akapit = document.createElement("p");
         for (var i = 0; i < this.fields.length; i++) {
             this.fields[i].getValue();
             console.log(this.fields[i].getValue());
+            var akapit = document.createElement("p");
             this.prevValues.push(this.fields[i].getValue());
+            akapit.innerText = this.fields[i].name + "  " + this.fields[i].getValue();
+            boxAnkieta === null || boxAnkieta === void 0 ? void 0 : boxAnkieta.appendChild(akapit);
         }
+        test6 === null || test6 === void 0 ? void 0 : test6.appendChild(boxAnkieta);
+        var button2 = document.createElement("button");
+        button2.innerText = "remove";
+        button2.addEventListener("click", function (e) {
+            boxAnkieta.remove();
+            window.localStorage.removeItem("data"); // <--
+        });
+        boxAnkieta === null || boxAnkieta === void 0 ? void 0 : boxAnkieta.appendChild(button2);
+        // zapisywanie do local storage
         var data = JSON.stringify(this.prevValues);
         window.localStorage.setItem("data", data);
     };
     return Form;
 }());
 var formCreate = new App();
+//  let data = JSON.stringify(this.prevValues);
+//     window.localStorage.setItem("data", data);
