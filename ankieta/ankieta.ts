@@ -5,6 +5,7 @@ enum FieldType {
   email = "email",
   checkBox = "checkbox",
   radio = "radio",
+  select = "select",
 }
 
 interface Field {
@@ -18,20 +19,21 @@ interface Field {
 class InputField implements Field {
   name: string;
   label: string;
-  type: FieldType;
+  type: FieldType = FieldType.textBox;
   element: HTMLInputElement;
   labelhtml: HTMLLabelElement;
   div: HTMLElement;
 
   constructor(name: string, label: string) {
+    this.name = name;
+    this.label = label;
     this.div = <HTMLElement>document.createElement("div");
 
     this.element = <HTMLInputElement>document.createElement("input");
-    this.name = name;
-    this.element.type = "text";
-    this.labelhtml = <HTMLLabelElement>document.createElement("label");
 
-    this.labelhtml.innerHTML = label;
+    this.element.type = this.type;
+    this.labelhtml = <HTMLLabelElement>document.createElement("label");
+    this.labelhtml.innerHTML = this.label;
     this.element.name = this.name;
     this.div.appendChild(this.labelhtml);
     this.div.appendChild(this.element);
@@ -51,20 +53,21 @@ class InputField implements Field {
 class TextAreaField implements Field {
   name: string;
   label: string;
-  type: FieldType;
+  type: FieldType = FieldType.textArea;
   element: HTMLTextAreaElement;
   labelhtml: HTMLLabelElement;
   div: HTMLElement;
 
   constructor(name: string, label: string) {
+    this.name = name;
+    this.label = label;
     this.div = <HTMLElement>document.createElement("div");
 
     this.element = <HTMLTextAreaElement>document.createElement("textarea");
-    this.name = name;
 
     this.labelhtml = <HTMLLabelElement>document.createElement("label");
 
-    this.labelhtml.innerHTML = label;
+    this.labelhtml.innerHTML = this.label;
     this.element.name = this.name;
     this.div.appendChild(this.labelhtml);
     this.div.appendChild(this.element);
@@ -84,20 +87,22 @@ class TextAreaField implements Field {
 class DateField implements Field {
   name: string;
   label: string;
-  type: FieldType;
+  type: FieldType = FieldType.date;
   element: HTMLInputElement;
   labelhtml: HTMLLabelElement;
   div: HTMLElement;
 
   constructor(name: string, label: string) {
+    this.name = name;
+    this.label = label;
     this.div = <HTMLElement>document.createElement("div");
 
     this.element = <HTMLInputElement>document.createElement("input");
-    this.name = name;
-    this.element.type = "date";
+
+    this.element.type = this.type;
     this.labelhtml = <HTMLLabelElement>document.createElement("label");
 
-    this.labelhtml.innerHTML = label;
+    this.labelhtml.innerHTML = this.label;
     this.element.name = this.name;
     this.div.appendChild(this.labelhtml);
     this.div.appendChild(this.element);
@@ -117,20 +122,22 @@ class DateField implements Field {
 class EmailField implements Field {
   name: string;
   label: string;
-  type: FieldType;
+  type: FieldType = FieldType.email;
   element: HTMLInputElement;
   labelhtml: HTMLLabelElement;
   div: HTMLElement;
 
   constructor(name: string, label: string) {
+    this.name = name;
+    this.label = label;
     this.div = <HTMLElement>document.createElement("div");
 
     this.element = <HTMLInputElement>document.createElement("input");
-    this.name = name;
-    this.element.type = "email";
+
+    this.element.type = this.type;
     this.labelhtml = <HTMLLabelElement>document.createElement("label");
 
-    this.labelhtml.innerHTML = label;
+    this.labelhtml.innerHTML = this.label;
     this.element.name = this.name;
     this.div.appendChild(this.labelhtml);
     this.div.appendChild(this.element);
@@ -150,7 +157,7 @@ class EmailField implements Field {
 class SelectField implements Field {
   name: string;
   label: string;
-  type: FieldType;
+  type: FieldType = FieldType.select;
   element: HTMLSelectElement;
   labelhtml: HTMLLabelElement;
   option1: HTMLOptionElement;
@@ -158,11 +165,11 @@ class SelectField implements Field {
   div: HTMLElement;
 
   constructor(name: string, label: string, options: string[]) {
-    // trzeci parametr tablica
-    options.push("agh", "uj", "wsei");
+    this.name = name;
+    this.label = label;
     this.div = <HTMLElement>document.createElement("div");
     this.element = <HTMLSelectElement>document.createElement("select");
-    this.name = name;
+
     this.labelhtml = <HTMLLabelElement>document.createElement("label");
     options.forEach((element) => {
       this.option1 = <HTMLOptionElement>document.createElement("option");
@@ -170,13 +177,7 @@ class SelectField implements Field {
       this.option1.value = element;
       this.element.appendChild(this.option1);
     });
-    // this.option1 = <HTMLOptionElement>document.createElement("option");
-    //this.option1.innerHTML = "AGH";
-    //this.option1.value = "AGH";
-
-    //this.element.appendChild(this.option1);
-    //this.element.appendChild(this.option2);
-    this.labelhtml.innerHTML = label;
+    this.labelhtml.innerHTML = this.label;
     this.element.name = this.name;
     this.div.appendChild(this.labelhtml);
     this.div.appendChild(this.element);
@@ -197,20 +198,22 @@ class SelectField implements Field {
 class CheckboxField implements Field {
   name: string;
   label: string;
-  type: FieldType;
+  type: FieldType = FieldType.checkBox;
   element: HTMLInputElement;
   labelhtml: HTMLLabelElement;
   div: HTMLElement;
 
   constructor(name: string, label: string) {
+    this.name = name;
+    this.label = label;
     this.div = <HTMLElement>document.createElement("div");
 
     this.element = <HTMLInputElement>document.createElement("input");
-    this.name = name;
-    this.element.type = "checkbox";
+
+    this.element.type = this.type;
     this.labelhtml = <HTMLLabelElement>document.createElement("label");
 
-    this.labelhtml.innerHTML = label;
+    this.labelhtml.innerHTML = this.label;
     this.element.name = this.name;
     this.div.appendChild(this.labelhtml);
     this.div.appendChild(this.element);
@@ -226,75 +229,11 @@ class CheckboxField implements Field {
   }
 }
 
-class DescriptionBox {
-  local: Field[];
-  name: string;
-  label: string;
-  type: FieldType;
-  element: HTMLInputElement;
-  labelhtml: HTMLLabelElement;
-  div: HTMLElement;
-  button2: HTMLElement;
-  box: HTMLElement;
-
-  nameBox: HTMLElement;
-  surname: HTMLElement;
-  date: HTMLElement;
-  email: HTMLElement;
-  checkBox: HTMLElement;
-  selectBox: HTMLElement;
-  textArea: HTMLElement;
-
-  constructor() {
-    // this.div = <HTMLElement>document.createElement("div");
-    // this.nameBox = <HTMLElement>document.createElement("div");
-    // this.nameBox.append(" Imię: " + nameBox);
-    // this.surname = <HTMLElement>document.createElement("div");
-    // this.surname.append(" Nazwisko: " + surname);
-    // this.date = <HTMLElement>document.createElement("div");
-    // this.date.append(" Data urodzenia: " + date);
-    // this.email = <HTMLElement>document.createElement("div");
-    // this.email.append(" Email: " + email);
-    // this.checkBox = <HTMLElement>document.createElement("div");
-    // this.checkBox.append(" Ukończone 18 lat: " + checkBox);
-    // this.selectBox = <HTMLElement>document.createElement("div");
-    // this.selectBox.append(" Wybrany kierunek studiów: " + selectBox);
-    // this.textArea = <HTMLElement>document.createElement("div");
-    // this.textArea.append(" Uwagi: " + textArea);
-    // this.box = <HTMLElement>document.createElement("div");
-    this.button2 = <HTMLElement>document.createElement("button");
-    this.button2.innerText = "remove";
-    this.div;
-
-    //      .appendChild(this.nameBox)
-    //      .appendChild(this.surname)
-    //      .appendChild(this.date)
-    //      .appendChild(this.email)
-    //      .appendChild(this.checkBox)
-    //      .appendChild(this.selectBox)
-    //      .appendChild(this.textArea)
-    //      .appendChild(this.box)
-    // .appendChild(this.button2);
-
-    const test6 = document.querySelector("#formEnd");
-    test6?.appendChild(this.div);
-    this.removeButton();
-  }
-
-  removeButton(): void {
-    this.button2.addEventListener("click", (e) => {
-      this.div.remove();
-    });
-  }
-}
-
-//=====
-
 class App {
   form: any;
   div: HTMLElement;
   constructor() {
-    this.form = new Form("1");
+    this.form = new Form(1);
 
     this.createButton();
   }
@@ -305,14 +244,12 @@ class App {
     document.querySelector("#box2")?.appendChild(button);
 
     button.addEventListener("click", (e) => {
-      this.form.render();
       this.form.showValues();
     });
   }
 }
 
 class Form {
-  // zrobic to tablica
   fields: Field[];
   formElement: HTMLElement;
   NameBox: InputField;
@@ -322,67 +259,57 @@ class Form {
   Check1: CheckboxField;
   SelektBox: SelectField;
   TextAreaBox: TextAreaField;
-  prevValues: DescriptionBox[];
+  prevValues: any[];
   ID: Number = 0;
 
-  constructor(id: string) {
+  constructor(id: number) {
     this.prevValues = new Array();
-
+    this.ID = id;
     this.fields = new Array(
-      new InputField("Name:  ", " Imię: ") as Field,
-      new InputField("Surname: ", " Nazwisko: ") as Field,
-      new DateField("Data:  ", " Data urodzenia: ") as Field,
-      new EmailField("email: ", " Email: ") as Field,
-      new CheckboxField("box1: ", " Ukończone 18 lat: ") as Field,
-      new SelectField("select:  ", " Wybrany kierunek studiów: ", []) as Field,
-      new TextAreaField("TextArea1: ", " uwagi: ") as Field
+      new InputField("name", " Imię: ") as Field,
+      new InputField("surname", " Nazwisko: ") as Field,
+      new DateField("data", " Data urodzenia: ") as Field,
+      new EmailField("email", " Email: ") as Field,
+      new CheckboxField("isAdult", " Ukończone 18 lat: ") as Field,
+      new SelectField("studia", " Wybrany kierunek studiów: ", [
+        "agh",
+        "uj",
+        "wsei",
+      ]) as Field,
+      new TextAreaField("uwagi", " Uwagi: ") as Field
     );
-
-    //this.formElement = document.getElementById(id);
-  }
-
-  render(): void {
-    // this.NameBox.render();
-    // this.NameBox2.render();
-    // this.DateBox.render();
-    // this.EmailBox.render();
-    // this.Check1.render();
-    // this.SelektBox.render();
-    // this.TextAreaBox.render();
-    // const test6 = document.querySelector("#formEnd");
-    // for (let j = 0; j < this.fields.length; j++) {
-    //   this.fields[j].getValue();
-    //   console.log(this.fields[j].getValue());
-    // test6?.appendChild(this.fields[j].getValue());
   }
 
   showValues(): void {
     let test6 = document.querySelector("#formEnd");
     let boxAnkieta = document.createElement("div");
-    // let akapit = document.createElement("p");
+
+    const ankieta: any = {};
     for (let i = 0; i < this.fields.length; i++) {
+      ankieta[this.fields[i].name] = this.fields[i].getValue();
       this.fields[i].getValue();
       console.log(this.fields[i].getValue());
       let akapit = document.createElement("p");
-      this.prevValues.push(this.fields[i].getValue());
-      akapit.innerText = this.fields[i].name + "  " + this.fields[i].getValue();
+      akapit.innerText =
+        this.fields[i].label + "  " + this.fields[i].getValue();
       boxAnkieta?.appendChild(akapit);
     }
+    this.prevValues.push(ankieta);
+    console.log(ankieta);
     test6?.appendChild(boxAnkieta);
     let button2 = <HTMLElement>document.createElement("button");
     button2.innerText = "remove";
     button2.addEventListener("click", (e) => {
       boxAnkieta.remove();
-      window.localStorage.removeItem("data"); // <--
+      //<-----
+      let data = JSON.stringify(this.prevValues);
+      window.localStorage.setItem("data" + this.ID, data);
     });
     boxAnkieta?.appendChild(button2);
-
     // zapisywanie do local storage
     let data = JSON.stringify(this.prevValues);
-    window.localStorage.setItem("data", data);
+    window.localStorage.setItem("data" + this.ID, data);
   }
 }
 
 const formCreate = new App();
-//  let data = JSON.stringify(this.prevValues);
-//     window.localStorage.setItem("data", data);
