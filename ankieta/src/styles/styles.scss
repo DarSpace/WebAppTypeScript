@@ -1,4 +1,33 @@
-$body-color: red;
+$body-color: rgba(228, 253, 1, 0.534);
+$div2-color: rgba(9, 211, 238, 0.63);
+$button-color: rgba(2, 255, 57, 0.438);
+$border-Radiaus-value1: 70px;
+
 body {
-  color: $body-color;
+  background-color: $body-color;
+}
+
+label {
+  margin-left: 10px;
+}
+
+button {
+  height: 40px;
+  width: 100px;
+  font-size: 20px;
+  margin-left: 10px;
+  background-color: $button-color;
+  border-top-right-radius: $border-Radiaus-value1;
+  border-bottom-left-radius: $border-Radiaus-value1;
+  border-bottom-right-radius: $border-Radiaus-value1;
+}
+
+#box2 {
+  background-color: $div2-color;
+  height: 300px;
+  width: 500px;
+  border-top-right-radius: $border-Radiaus-value1;
+  border-bottom-left-radius: $border-Radiaus-value1;
+  border-bottom-right-radius: $border-Radiaus-value1;
+  margin-left: 20px;
 }

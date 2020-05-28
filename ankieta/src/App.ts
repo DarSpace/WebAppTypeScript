@@ -1,5 +1,5 @@
 import { Form } from "./Form";
-
+import "./styles/styles.scss";
 class App {
   form: any;
   div: HTMLElement;

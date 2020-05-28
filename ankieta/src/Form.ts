@@ -6,6 +6,7 @@ import { SelectField } from "./SelectField";
 import { TextAreaField } from "./TextAreaField";
 import { Field } from "./Field";
 import { SelectFieldApi } from "./SelectFieldApi";
+import "./styles/styles.scss";
 
 export class Form {
   fields: Field[];
@@ -58,6 +59,7 @@ export class Form {
     this.prevValues.push(ankieta);
     console.log(ankieta);
     test6?.appendChild(boxAnkieta);
+
     let button2 = <HTMLElement>document.createElement("button");
     button2.innerText = "remove";
     button2.addEventListener("click", (e) => {
