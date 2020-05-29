@@ -60,6 +60,12 @@ export class Form {
     console.log(ankieta);
     test6?.appendChild(boxAnkieta);
 
+    let button3 = <HTMLElement>document.createElement("button");
+    button3.innerText = "edit";
+    button3.addEventListener("click", (e) => {
+      /////// funkcja do edycji
+    });
+
     let button2 = <HTMLElement>document.createElement("button");
     button2.innerText = "remove";
     button2.addEventListener("click", (e) => {
@@ -69,6 +75,7 @@ export class Form {
       window.localStorage.setItem("data" + this.ID, data);
     });
     boxAnkieta?.appendChild(button2);
+    boxAnkieta?.appendChild(button3);
     // zapisywanie do local storage
     let data = JSON.stringify(this.prevValues);
     window.localStorage.setItem("data" + this.ID, data);

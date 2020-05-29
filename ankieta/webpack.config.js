@@ -25,4 +25,28 @@ const config = {
   },
 };
 
-module.exports = config;
+const serverConifg = {
+  devtool: "sourcemap",
+  entry: {
+    server: "./src/server.ts",
+  },
+  target: "node",
+  module: {
+    rules: [
+      {
+        test: /\.tsx?$/,
+        use: "ts-loader",
+        exclude: /node_modules/,
+      },
+    ],
+  },
+  resolve: {
+    extensions: [".tsx", ".ts", ".js"],
+  },
+  output: {
+    path: path.resolve(__dirname, "dist"),
+    filename: "[name].js",
+  },
+};
+
+module.exports = [config, serverConifg];
