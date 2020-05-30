@@ -21,11 +21,12 @@ export class Form {
   TestSelect: SelectField;
 
   prevValues: any[];
-  ID: Number = 0;
+  ID: Number = Date.now();
 
   constructor(id: number) {
     this.prevValues = new Array();
     this.ID = id;
+    id = Date.now();
     this.fields = new Array(
       new InputField("name", " Imię: ") as Field,
       new InputField("surname", " Nazwisko: ") as Field,
@@ -45,27 +46,39 @@ export class Form {
   showValues(): void {
     let test6 = document.querySelector("#formEnd");
     let boxAnkieta = document.createElement("div");
+    boxAnkieta.id = Date.now().toString();
 
     const ankieta: any = {};
     for (let i = 0; i < this.fields.length; i++) {
       ankieta[this.fields[i].name] = this.fields[i].getValue();
       this.fields[i].getValue();
       console.log(this.fields[i].getValue());
+
       let akapit = document.createElement("p");
       akapit.innerText =
         this.fields[i].label + "  " + this.fields[i].getValue();
+
       boxAnkieta?.appendChild(akapit);
     }
+
     this.prevValues.push(ankieta);
     console.log(ankieta);
     test6?.appendChild(boxAnkieta);
 
+    //------------------------------------------------------------------------
+    //========================================================================
+    var editing = <HTMLElement>document.createElement("input");
+
+    // przycisk do edycji ==================================================
     let button3 = <HTMLElement>document.createElement("button");
     button3.innerText = "edit";
     button3.addEventListener("click", (e) => {
       /////// funkcja do edycji
+      // alert("podpiołes dobrze przycisk ");
+      ankieta.akapit.replaceChild(ankieta, editing);
     });
 
+    //==========================================================================
     let button2 = <HTMLElement>document.createElement("button");
     button2.innerText = "remove";
     button2.addEventListener("click", (e) => {
