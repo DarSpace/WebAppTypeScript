@@ -55,10 +55,22 @@ export class Form {
       console.log(this.fields[i].getValue());
 
       let akapit = document.createElement("p");
-      akapit.innerText =
-        this.fields[i].label + "  " + this.fields[i].getValue();
+      akapit.className = "title";
+      let akapit2 = document.createElement("p");
+      // akapit.id = Date.now().toString();
+      akapit.id = boxAnkieta.id;
 
+      akapit.innerText = this.fields[i].label;
+
+      akapit2.innerText = this.fields[i].getValue();
+      //aktualizacja na akapicie nie działa działa tylko na div
+      akapit2.addEventListener("input", (e) => {
+        var index = this.prevValues.indexOf(this.fields[i].name);
+        this.prevValues[index] = akapit2.innerText;
+        console.log("test" + akapit2.innerText);
+      });
       boxAnkieta?.appendChild(akapit);
+      boxAnkieta?.appendChild(akapit2);
     }
 
     this.prevValues.push(ankieta);
@@ -67,18 +79,27 @@ export class Form {
 
     //------------------------------------------------------------------------
     //========================================================================
-    var editing = <HTMLElement>document.createElement("input");
-
     // przycisk do edycji ==================================================
     let button3 = <HTMLElement>document.createElement("button");
     button3.innerText = "edit";
+
     button3.addEventListener("click", (e) => {
-      /////// funkcja do edycji
-      // alert("podpiołes dobrze przycisk ");
-      ankieta.akapit.replaceChild(ankieta, editing);
+      boxAnkieta.setAttribute("contenteditable", "true");
+    });
+
+    //
+    let button4 = <HTMLElement>document.createElement("button");
+    button4.innerText = "save";
+
+    button4.addEventListener("click", (e) => {
+      boxAnkieta.setAttribute("contenteditable", "false");
+
+      let data = JSON.stringify(this.prevValues);
+      window.localStorage.setItem("data" + this.ID, data);
     });
 
     //==========================================================================
+
     let button2 = <HTMLElement>document.createElement("button");
     button2.innerText = "remove";
     button2.addEventListener("click", (e) => {
@@ -89,6 +110,7 @@ export class Form {
     });
     boxAnkieta?.appendChild(button2);
     boxAnkieta?.appendChild(button3);
+    boxAnkieta?.appendChild(button4);
     // zapisywanie do local storage
     let data = JSON.stringify(this.prevValues);
     window.localStorage.setItem("data" + this.ID, data);
