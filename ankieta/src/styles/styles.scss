@@ -3,6 +3,12 @@ $div2-color: rgba(9, 211, 238, 0.63);
 $button-color: rgba(2, 255, 57, 0.438);
 $border-Radiaus-value1: 70px;
 
+@mixin butonsharpe {
+  border-top-right-radius: $border-Radiaus-value1;
+  border-bottom-left-radius: $border-Radiaus-value1;
+  border-bottom-right-radius: $border-Radiaus-value1;
+}
+
 body {
   background-color: $body-color;
 }
@@ -17,21 +23,18 @@ button {
   font-size: 20px;
   margin-left: 10px;
   background-color: $button-color;
-  border-top-right-radius: $border-Radiaus-value1;
-  border-bottom-left-radius: $border-Radiaus-value1;
-  border-bottom-right-radius: $border-Radiaus-value1;
+  @include butonsharpe;
 }
 
 #box2 {
   background-color: $div2-color;
   height: 300px;
   width: 500px;
-  border-top-right-radius: $border-Radiaus-value1;
-  border-bottom-left-radius: $border-Radiaus-value1;
-  border-bottom-right-radius: $border-Radiaus-value1;
   margin-left: 20px;
+  @include butonsharpe;
 }
 
 .title {
   background-color: rgba(0, 128, 0, 0.336);
+  font-weight: bold;
 }

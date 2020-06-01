@@ -1,6 +1,6 @@
 import * as http from "http";
 import * as websocket from "ws";
-
+import { Form } from "./Form";
 const server = http.createServer((req, res) => {
   res.end("I'm connected");
 });
@@ -10,7 +10,6 @@ socket.on("connection", function connection(ws) {
   ws.on("message", function incoming(message) {
     console.log("received: %s", message);
   });
-
   ws.send("something");
 });
 

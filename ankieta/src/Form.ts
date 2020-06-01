@@ -63,12 +63,7 @@ export class Form {
       akapit.innerText = this.fields[i].label;
 
       akapit2.innerText = this.fields[i].getValue();
-      //aktualizacja na akapicie nie działa działa tylko na div
-      akapit2.addEventListener("input", (e) => {
-        var index = this.prevValues.indexOf(this.fields[i].name);
-        this.prevValues[index] = akapit2.innerText;
-        console.log("test" + akapit2.innerText);
-      });
+
       boxAnkieta?.appendChild(akapit);
       boxAnkieta?.appendChild(akapit2);
     }
@@ -77,7 +72,6 @@ export class Form {
     console.log(ankieta);
     test6?.appendChild(boxAnkieta);
 
-    //------------------------------------------------------------------------
     //========================================================================
     // przycisk do edycji ==================================================
     let button3 = <HTMLElement>document.createElement("button");

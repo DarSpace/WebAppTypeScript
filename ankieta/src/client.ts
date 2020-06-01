@@ -1,4 +1,5 @@
-let socket = new WebSocket("ws://localhost:8080");
+import { Form } from "./Form";
+export let socket = new WebSocket("ws://localhost:8080");
 
 socket.onopen = function (e) {
   alert("Connected");

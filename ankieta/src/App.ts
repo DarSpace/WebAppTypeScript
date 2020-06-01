@@ -1,4 +1,5 @@
 import { Form } from "./Form";
+
 import "./styles/styles.scss";
 class App {
   form: any;
@@ -11,6 +12,7 @@ class App {
 
   createButton(): void {
     const button = document.createElement("button");
+    button.id = "send";
     button.innerText = "create";
     document.querySelector("#box2")?.appendChild(button);
 
