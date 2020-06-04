@@ -72,8 +72,7 @@ export class Form {
     console.log(ankieta);
     test6?.appendChild(boxAnkieta);
 
-    //========================================================================
-    // przycisk do edycji ==================================================
+    // przycisk do edycji
     let button3 = <HTMLElement>document.createElement("button");
     button3.innerText = "edit";
 
@@ -91,8 +90,6 @@ export class Form {
       let data = JSON.stringify(this.prevValues);
       window.localStorage.setItem("data" + this.ID, data);
     });
-
-    //==========================================================================
 
     let button2 = <HTMLElement>document.createElement("button");
     button2.innerText = "remove";

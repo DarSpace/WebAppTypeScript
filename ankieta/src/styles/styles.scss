@@ -1,6 +1,7 @@
 $body-color: rgba(228, 253, 1, 0.534);
 $div2-color: rgba(9, 211, 238, 0.63);
 $button-color: rgba(2, 255, 57, 0.438);
+$title-color: rgba(0, 128, 0, 0.205);
 $border-Radiaus-value1: 70px;
 
 @mixin butonsharpe {
@@ -35,6 +36,6 @@ button {
 }
 
 .title {
-  background-color: rgba(0, 128, 0, 0.336);
+  background-color: $title-color;
   font-weight: bold;
 }
